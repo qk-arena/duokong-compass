@@ -497,4 +497,7 @@ def build_symbol(symbol):
             out["timeframes"][tf] = a
     out["price"] = daily[-1]["c"] if daily else None
     out["price_source"] = dsrc
+    # sparkline：只用已收盘日线收盘价（daily 在 fetch_daily_long/fetch 里已过滤 finished），
+    # 取最后 ≤60 根，6 位有效数字足够画走势小图；无数据则空数组，前端整块不渲染。
+    out["spark_1d"] = [float(f"{r['c']:.6g}") for r in daily[-60:]] if daily else []
     return out
