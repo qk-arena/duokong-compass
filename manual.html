@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <link rel="icon" href="logo.svg" />
+    <title>多空罗盘 · 产品说明书</title>
+    <style>
+      :root{
+        color-scheme:dark;
+        --bg:#0b0e13; --paper:#10141c; --card:#131922; --card2:#171e29;
+        --ink:#eae7dc; --ink2:#a3abb6; --ink3:#6b7380;
+        --line:#212a35; --line2:#2e3947;
+        --gold:#c9a45c; --gold-soft:rgba(201,164,92,.13);
+        --long:#bf5b4c; --short:#4d9a7d;
+        --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",system-ui,sans-serif;
+        --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+      }
+      *{box-sizing:border-box}
+      body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.75}
+      .topbar{border-bottom:1px solid var(--line2);background:var(--paper);box-shadow:inset 0 -2px 0 0 rgba(201,164,92,.55)}
+      .topbar-in{max-width:860px;margin:0 auto;padding:16px;display:flex;gap:12px;align-items:center}
+      .topbar img{width:30px;height:30px}
+      .topbar h1{margin:0;font-size:21px;font-weight:900;letter-spacing:.05em}
+      .topbar h1 .gold{color:var(--gold)}
+      .topbar p{margin:2px 0 0;color:var(--ink2);font-size:12.5px}
+      .wrap{max-width:860px;margin:0 auto;padding:8px 16px 56px}
+      section{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin-top:16px}
+      h2{margin:0 0 10px;font-size:17px;font-weight:900}
+      h3{margin:18px 0 6px;font-size:15px;font-weight:900;color:var(--gold)}
+      h3:first-of-type{margin-top:6px}
+      p{margin:6px 0;color:var(--ink)}
+      .dim{color:var(--ink2)}
+      ul{margin:6px 0 6px 18px;padding:0}
+      li{margin:4px 0}
+      code{font-family:var(--mono);font-size:12.5px;background:#1a222d;padding:1px 5px;border-radius:4px;color:#d8d2c2}
+      a{color:var(--gold)}
+      .num{font-family:var(--mono)}
+      table{width:100%;border-collapse:collapse;font-size:13.5px;margin:8px 0}
+      th,td{border-bottom:1px solid #1b232e;padding:6px 8px;text-align:left;vertical-align:top}
+      th{color:var(--ink2);font-weight:700;white-space:nowrap}
+      .back{display:inline-block;margin-top:18px;border:1px solid var(--gold);color:var(--gold);border-radius:8px;padding:6px 16px;text-decoration:none;font-weight:700;font-size:13.5px}
+      footer{margin-top:16px;font-size:12.5px;color:var(--ink3);line-height:1.8;padding:0 4px}
+      @media (max-width:720px){ section{padding:14px 14px} .topbar h1{font-size:19px} }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar-in">
+        <img src="logo.svg" alt="多空罗盘 logo" />
+        <div>
+          <h1><span class="gold">多空</span>罗盘 · 产品说明书</h1>
+          <p>这份文件说明这个产品是什么、怎么读、数据口径是什么、开发中踩过哪些坑。</p>
+        </div>
+      </div>
+    </header>
+    <div class="wrap">
+
+      <section>
+        <h2>一、这是什么</h2>
+        <p>多空罗盘是一个看方向的因子看板。它用 39 个技术因子，对 10 个加密货币和 9 个美股（币安币股）逐个周期算方向，回答的问题只有一个：现在这个标的，在这个周期上，偏多、偏空，还是看不清。</p>
+        <p>它给的是判断参考，不是投资建议。它不喊单，不预测点位，不给目标价。它把每个方向的来历摊开：哪些因子投了多、哪些投了空、依据的是哪根 K 线、历史上同类信号的命中率是多少、样本有多大。看的人自己决定信不信、用不用。</p>
+        <p>它适合的人：自己看盘、自己做决定，但想多一个可核对的数据来源的人。它不适合的人：想找一个「必涨必跌」答案的人——这里没有这种东西。</p>
+      </section>
+
+      <section>
+        <h2>二、为什么做这个产品</h2>
+        <p>这个产品是从一个旧看板改出来的。旧看板用了很久，后来逐项核对数据，发现几个硬伤：</p>
+        <ul>
+          <li>页面上那个「做多概率 31%」之类的百分比，是拿因子票数喂给一个逻辑函数算出来的映射值，不是胜率，也不是任何统计意义上的概率，纯粹是好看的数字。</li>
+          <li>页面显示的价格是上一根已收盘日线的收盘价。也就是说你白天打开页面，看到的是昨天收盘的价，全线滞后一天，自己还不容易察觉。</li>
+          <li>因子里有一批算错了：有的窗口差一根，有的平盘时给出假的极端值，有的周期对齐错位。拿错误的因子投票，票数越多错得越整齐。</li>
+          <li>几个衍生品快照因子（资金费率、持仓量一类）没有历史序列，却被贴到所有周期上一起投票，等于同一个数在每个周期重复计票。</li>
+        </ul>
+        <p>所以定了一条底线：这个产品里每个数字都要对得上账。价格要能跟交易所现价对上，因子要能用第二套独立实现复算，命中率要是真回测出来的、带样本量的，历史记录只许追加、不许改。宁可数字难看，不许数字是编的。产品口号「数据为王，结果为王」就是这个意思。</p>
+      </section>
+
+      <section>
+        <h2>三、功能与使用说明</h2>
+
+        <h3>1. 标的与周期</h3>
+        <p>加密 10 个：BTC、ETH、SOL、BNB、XRP、DOGE、ADA、LINK、AVAX、LTC（USDT 现货）。美股 9 个：AAPL、AMZN、GOOGL、META、MSFT、NVDA、QQQ、SPY、TSLA，走币安币股（bStocks，交易对是代码加 B，如 NVDAB/USDT）。</p>
+        <p>页面展示 7 个周期：5 分、15 分、30 分、1 时、4 时、日线、周线。其中正式信号周期是 4 时、日线、周线、月线——只有这四个周期进台账、做回测。5 分到 1 时四个短周期只展示方向，噪声大，不当真。页面上方的标的条（芯片）点一下就能切换标的，芯片上显示的是该标的日线方向和日线回测命中率。</p>
+
+        <h3>2. 因子投票是什么，不是什么</h3>
+        <p>每个因子就是一条写死的规则，拿 K 线数据算完，只投三种票：看多 +1、看空 −1、中性 0。比如「价格在 200 日均线之上」投多、「RSI 冲到超买区」按反向规则投空，如此等等。39 个因子分成两组：趋势组 18 个，管长周期方向；动量组 21 个，管短期强弱和修复。</p>
+        <p>要说清的是：票数是规则表决的结果，不是多少个分析师在看多，更不是概率。21 比 5 不代表「大概率涨」，只代表在当前这套规则下，站到多边的规则更多。每个因子的具体数值和每一票投给谁，点开因子矩阵都能看到，可以自己复算。</p>
+        <p>因子库是审过的。旧看板原来有 57 个因子，逐个按标准公式核对：算错的按权威定义重写、用两套独立实现交叉验证后才保留；纯粹重复的（同一公式换参数、换名字）合并；没有历史序列的快照因子和有前视偏差的横截面因子剔除。最后留下 39 个，审查过程记在项目的因子审计文件里。</p>
+
+        <h3>3. 动量与趋势为什么分开</h3>
+        <p>短期和长期经常是反的。举个实际的例子：2026 年 11 月 27 日，BTC 日线的动量是偏多——跌了一大段之后，MACD 柱连续收敛、DIF 往上走，是下跌动能在衰竭、价格在修复；但同一时刻周线、月线的趋势还是偏空——大级别均线结构没有翻过来。如果把所有周期的票加在一起做一个总标题，短期这个偏多会被长期空票盖掉，第一眼看到的就是「偏空」，跟盘面正在修复的体感对不上。</p>
+        <p>所以本站把两者分开标：动量方向按 MACD 动量结构判定（金叉状态为偏多；死叉且柱连续放大向下为偏空；死叉但柱连续收敛、DIF 上行回归为修复结构偏多；其余中性），趋势方向按趋势组因子投票判定（票数均值过 ±0.25 才算偏多/偏空）。综合方向的规则写死：两者同向，取该向；一个中性，取有方向的那个；两者背离，综合记中性（观察）——背离的时候本来就不该硬给方向。</p>
+
+        <h3>4. 历史命中率口径</h3>
+        <p>页面上唯一允许出现的百分比，是回测命中率。它的算法：拿和线上完全相同的引擎（同一套 39 个因子、同样的合成规则、只用已收盘 K 线），在历史 K 线上逐根回放，每根 K 线收盘时按当时能看到的数据生成一次方向判断，再以下一根 K 线的收盘价比发出时的收盘价定对错，涨跌幅一并记录。中性判断不计入统计。</p>
+        <p>芯片和仪表盘上显示的，是同标的、同周期、同方向的历史命中率，并且必须同时带样本量。样本量低于 30 的不显示百分比，只写「样本不足」。短周期（5 分到 1 时）没有回测，只标「未回测（展示口径）」。</p>
+        <p>全站回测共 35,694 个方向信号（加密 10 个标的四个周期，币股 9 个标的两个周期），总体命中率 47.8%。分周期看：4 小时 47.3%（样本 22,707）、日线 48.7%（样本 11,585）、周线 49.3%（样本 430）、月线 49.4%（样本 172）。这个数接近五成，不算好看，但它是真回测出来的，就照这个数显示，不调参数、不挑区间。</p>
+        <p>再强调一遍口径：这是历史信号命中率，不是未来涨跌概率。过去同类信号对了多少次，不承诺下一次。</p>
+
+        <h3>5. 台账怎么查</h3>
+        <p>正式信号周期的每一次方向判断都会记进台账：编号、标的、周期、发出时间、发出价、动量方向、趋势方向、综合方向，都写清楚。下一根同周期 K 线收盘后，上一条记录按收盘价结清，写明命中还是未命中、涨跌幅多少。</p>
+        <p>台账只追加，不修改、不删除。早期记错的记录如果有，也只能在后面追加一条更正说明，原文保留。页面底部的台账区能看到最新记录和累计结清统计；台账的实盘命中率和上面的回测命中率是两回事，页面上分开标注，不混在一起算。</p>
+
+        <h3>6. 实时价与信号数据的区别</h3>
+        <p>页面上的价格是打开页面时直接从交易所公开接口拉的现价，定时自动刷新，和交易所现价对得上（本地验证误差在 0.3% 以内）。</p>
+        <p>但信号不是拿现价算的。所有因子和方向判断只用已收盘的 K 线：当前这根还没走完的 K 线不参与计算。所以盘中价格跳动不会让方向跟着乱跳，方向只在一根 K 线收盘后才可能变化。台账里记的发出价也是收盘口径，和信号的生成口径一致。</p>
+      </section>
+
+      <section>
+        <h2>四、开发中踩过的坑</h2>
+        <p>如实记一下，都是真出过的问题。</p>
+        <ul>
+          <li><strong>假概率。</strong>旧看板的百分比是逻辑函数把票数映射出来的，看起来像胜率，其实和历史对错没有任何关系。新版一开始直接把百分比禁了，后来用户说做成真的，才有了第三节第 4 条那套真回测，算出来 47.8%，不好看，照登。</li>
+          <li><strong>价格滞后一天。</strong>旧版拿已收盘日线收盘价当现价展示，数据一天才更新一次，页面上的价格永远是昨天的。发现的时候是拿用户截图和页面逐个币对的，四个币全线对不上，才定位到。</li>
+          <li><strong>因子算错的几种典型。</strong>Aroon 指标窗口差一根，整列值都是错的；RSI 遇到平盘（涨跌幅都是 0）时除零给出假的 100；周线聚合时对齐到错误的周起始日，和交易所的周线对不上。这类错误单看代码看不出来，是拿第二套独立实现逐个因子对账才抓出来的。</li>
+          <li><strong>未收盘 K 线算信号。</strong>早期版本拿正在走的那根 K 线参与计算，盘中方向会反复横跳，台账还会把没定型的信号记进去。后来定死：只用已收盘 K 线。</li>
+          <li><strong>快照因子贴全周期。</strong>资金费率这类数据只有当前值、没有历史序列，旧版把它同时贴到从 5 分到周线的每个周期投票，等于一个数重复计票多遍。新版直接剔除，不再让这类数据进因子库。</li>
+          <li><strong>横截面动量的前视偏差。</strong>拿「当前这批币里谁涨得多」算因子，池子成分一变，历史信号就跟着变，等于偷看未来，剔除。</li>
+          <li><strong>复刻时把点击事件弄丢了。</strong>前端先是推倒重建了一套，后来改回以旧看板为底本复刻、只换计算核心。转换过程中误删了旧版的一段事件绑定，芯片点不动、标的切不了，渲染验证全过、点击验证没做，差点带着这个毛病上线。后来补上点击路径的验证才发现，已修复。</li>
+          <li><strong>回测第一版跑崩了。</strong>第一版回测跑了十个币种后在第一个美股标的上因为一次网络超时整体崩溃，结果只在最后统一落盘，前面算的全丢了。改成每算完一个标的就增量保存、断点续跑，才把全量跑完。</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>五、当前状态</h2>
+        <p>产品处于测试阶段，下面几条如实说明：</p>
+        <ul>
+          <li>台账样本积累中：截至本说明书定稿，累计结清 15 条，其中命中 5 条、未命中 10 条。样本还很少，这个命中率说明不了什么，要等样本攒够才有参考价值。</li>
+          <li>回测命中率如第三节第 4 条所列，总体 47.8%，接近五成。这个产品的价值在把数据摊开可核对，不在命中率有多高，请按这个预期使用。</li>
+          <li>美股是币股口径：行情来自币安 bStocks，跟踪股价可能有小幅偏离，不是交易所股价；币股历史短（2026 年 6 月起），只有 4 小时和日线两个周期有回测，周线数据不足，页面上如实显示无数据。</li>
+          <li>短周期（5 分、15 分、30 分、1 时）未做回测，只展示方向，页面已标注，不要拿它们当信号用。</li>
+          <li>数据每 4 小时自动更新一轮；个别标的偶尔会遇到交易所接口超时，该轮缺失会在下一轮自动补上，台账不会因此断档或重复记账。</li>
+          <li>本站不收费，没有下单功能，不接任何人的账户和资金。</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>六、联系方式</h2>
+        <p>Telegram：<a href="https://t.me/onefanlab" target="_blank" rel="noopener">@onefanlab</a></p>
+        <p>邮箱：<a href="mailto:onefanlab@gmail.com">onefanlab@gmail.com</a></p>
+        <p>发现数字对不上、因子算错、台账有问题，直接按上面两个方式找我们，附上标的、周期和时间，查实了就改，台账的更正按只追加的规矩走。</p>
+        <a class="back" href="index.html">返回主页</a>
+      </section>
+
+      <footer>
+        多空罗盘 · 一凡工作室出品。<br />
+        本站所有方向判断与命中率均为历史数据统计，不构成投资建议。
+      </footer>
+    </div>
+  </body>
+</html>
