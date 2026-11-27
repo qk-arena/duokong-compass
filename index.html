@@ -2075,7 +2075,7 @@
       if (!isCrypto(sym)) bits.push("币股行情（Binance bStocks）：跟踪股价可能有小幅偏离，不冒充交易所股价");
       var okCount=TIMEFRAMES.filter(function(tf){ var s=state.series[skey(sym,tf.id)]; return s&&s.status==="ok"; }).length;
       var errCount=TIMEFRAMES.filter(function(tf){ var s=state.series[skey(sym,tf.id)]; return s&&s.status==="error"; }).length;
-      bits.push("周期加载 "+okCount+"/7"+(errCount? "，失败 "+errCount+"（见各仪表卡）":""));
+      bits.push("周期加载 "+okCount+"/"+TIMEFRAMES.length+(errCount? "，失败 "+errCount+"（见各仪表卡）":""));
       $("symMeta").innerHTML=bits.join("<span style='color:var(--line2)'>|</span> ");
     }
     function renderSymHeadPrice(){
@@ -2127,7 +2127,7 @@
       else if (age){
         meta="数据 "+fmtAge(age.ageMs)+" · "+esc(age.source||"");
         if (age.stale) meta+=" <span class='badge stale'>已过期</span>";
-        meta+="<br>"+(bt? "回测 "+esc(btRangeTxt(sym, tf.id)) : (btHas(sym, tf.id)? "回测样本不足" : "未回测（展示口径）"));
+        meta+="<br>"+(bt? "回测 "+esc(btRangeTxt(sym, tf.id)) : (dir==="中性"? "综合中性 · 不计命中率" : (btHas(sym, tf.id)? "回测样本不足" : "未回测（展示口径）")));
         if (ev) meta+="<br>动量 "+ev.momentum_dir+" · 趋势 "+ev.trend_dir;
       }
       return "<div class='gauge'>"+
