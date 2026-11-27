@@ -1,32 +1,105 @@
+:root{
+  --bg:#000;
+  --card-hi:#101410;
+  --card-lo:#0b0e0a;
+  --inner:#080a08;
+  --line:#232a1e;
+  --line2:#2e3826;
+  --up:#2bea79;
+  --down:#ff3761;
+  --accent:#c6f542;
+  --muted:#9a9a9a;
+  --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+  --shadow:0 1px 2px rgba(0,0,0,.6),0 12px 28px rgba(0,0,0,.45);
+}
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:#000;color:#fff;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;padding:14px;max-width:1060px;margin:0 auto;overflow-x:hidden}
-header{display:flex;align-items:center;gap:12px;padding:10px 2px 16px}
+body{background:var(--bg);color:#fff;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;padding:14px;max-width:1060px;margin:0 auto;overflow-x:hidden}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+header{display:flex;align-items:center;gap:12px;padding:10px 2px 16px;box-shadow:inset 0 -2px 0 rgba(198,245,66,.45);margin-bottom:18px}
 header img{width:52px;height:52px}
 h1{font-size:26px;letter-spacing:2px}
-.tag{color:#c6f542;font-size:13px;margin-top:3px}
-.contact{margin-left:auto;font-size:13px;color:#9a9a9a;text-align:right}
-.contact a{color:#c6f542;text-decoration:none}
-section{margin-bottom:22px}
-h2{font-size:17px;margin-bottom:10px;border-left:4px solid #c6f542;padding-left:8px}
+.tag{color:var(--accent);font-size:13px;margin-top:3px}
+.contact{margin-left:auto;font-size:13px;color:var(--muted);text-align:right}
+.contact a{color:var(--accent);text-decoration:none}
+section.panel{background:linear-gradient(145deg,var(--card-hi),var(--card-lo));border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);margin-bottom:18px;overflow:hidden}
+.panel-h{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:12px 16px;border-bottom:1px solid var(--line)}
+.panel-h h2{font-size:16px;font-weight:800;letter-spacing:1px}
+.panel-h .hint{font-size:11.5px;color:var(--muted);text-align:right}
+.panel-b{padding:14px}
+.up{color:var(--up)}.down{color:var(--down)}.accent{color:var(--accent)}.muted{color:var(--muted)}
+/* 战绩大数字带 */
 .scoreboard{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.score{background:#0d0d0d;border:1px solid #262626;border-radius:10px;padding:14px}
-.score .num{font-size:30px;font-weight:700}
-.score .lab{color:#9a9a9a;font-size:12px;margin-top:4px}
-.up{color:#2bea79}.down{color:#ff3761}.accent{color:#c6f542}.muted{color:#9a9a9a}
-.symhead{display:flex;align-items:baseline;gap:10px;margin:16px 0 8px}
-.symhead .sym{font-size:19px;font-weight:700}
-.symhead .price{color:#c6f542;font-size:15px}
+.score{background:var(--inner);border:1px solid var(--line);border-radius:10px;padding:14px;min-width:0}
+.score .num{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:32px;font-weight:700;line-height:1.15;word-break:break-word}
+.score .lab{color:var(--muted);font-size:12px;margin-top:4px}
+.hitbar{display:flex;height:28px;border-radius:8px;overflow:hidden;margin-top:10px;border:1px solid var(--line)}
+.hb-seg{display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:700;min-width:0;white-space:nowrap;transition:width .3s}
+.hb-hit{background:rgba(43,234,121,.75);color:#04150a}
+.hb-miss{background:rgba(255,55,97,.75);color:#1c040a}
+.hitbar.zero .hb-hit,.hitbar.zero .hb-miss{background:#262626;color:var(--muted)}
+/* 标的头 + sparkline */
+.symblock{margin-bottom:20px}
+.symblock:last-child{margin-bottom:2px}
+.symhead{display:flex;align-items:flex-start;gap:10px;margin:2px 0 10px;flex-wrap:wrap}
+.symhead .sym{font-size:20px;font-weight:800}
+.symhead .price{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:25px;font-weight:700;color:#fff;line-height:1.1}
+.symhead .srcnote{font-size:11.5px;color:var(--muted);margin-top:3px}
+.symmain{min-width:0}
+.spark{margin-left:auto;text-align:right}
+.spark-cap{font-size:10.5px;color:var(--muted);margin-top:2px;font-family:var(--mono);font-variant-numeric:tabular-nums}
+/* 四周期分段总览 */
+.tfstrip{display:flex;gap:6px;margin-bottom:10px}
+.tfseg{flex:1 1 0;min-width:0;text-align:center;border:1px solid var(--line);border-radius:8px;padding:6px 2px;background:var(--inner)}
+.tfseg .tfl{font-size:11px;color:var(--muted)}
+.tfseg .tfd{font-size:13.5px;font-weight:800;margin-top:1px}
+.tfseg.seg-up{background:rgba(43,234,121,.10);border-color:rgba(43,234,121,.35)}
+.tfseg.seg-down{background:rgba(255,55,97,.10);border-color:rgba(255,55,97,.35)}
+.tfseg.seg-flat{background:rgba(198,245,66,.08);border-color:rgba(198,245,66,.30)}
+/* 周期卡 */
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-@media(max-width:560px){.grid{grid-template-columns:repeat(2,1fr);gap:8px}.score .num{font-size:24px}h1{font-size:22px}}
-.card{background:#0d0d0d;border:1px solid #262626;border-radius:10px;padding:12px;min-width:0}
-.card .tf{font-size:13px;color:#9a9a9a;display:flex;justify-content:space-between;gap:6px;flex-wrap:wrap}
-.dirline{font-size:21px;font-weight:700;margin:7px 0 2px}
-.dirline .sep{color:#555;font-weight:400;font-size:15px}
+.card{background:linear-gradient(145deg,var(--card-hi),var(--card-lo));border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:12px;min-width:0}
+.card.call-up{border-left:3px solid var(--up)}
+.card.call-down{border-left:3px solid var(--down)}
+.card.call-flat{border-left:3px solid var(--accent)}
+.card .tf{font-size:12.5px;color:var(--muted);display:flex;justify-content:space-between;gap:6px;flex-wrap:wrap}
+/* 半圆仪表盘（因子投票平衡，非概率） */
+.gaugewrap{text-align:center;margin:8px 0 2px}
+.gauge{width:124px;max-width:100%;height:auto}
+.gauge-cap{font-size:11px;color:var(--muted);margin-top:1px}
+.gauge-cap .mono{font-size:12px}
+/* 动量/趋势徽章 */
+.dirbadges{display:flex;gap:6px;flex-wrap:wrap;margin:7px 0 2px}
+.badge-d{font-size:12.5px;font-weight:700;padding:3px 9px;border-radius:999px;border:1px solid;white-space:nowrap}
+.badge-d.up{color:var(--up);border-color:rgba(43,234,121,.45);background:rgba(43,234,121,.10)}
+.badge-d.down{color:var(--down);border-color:rgba(255,55,97,.45);background:rgba(255,55,97,.10)}
+.badge-d.flat{color:var(--accent);border-color:rgba(198,245,66,.45);background:rgba(198,245,66,.08)}
 .basis{font-size:12px;color:#cfcfcf;line-height:1.55;margin-top:5px;word-break:break-word}
-.numbers{font-size:11.5px;color:#9a9a9a;line-height:1.55;margin-top:5px;word-break:break-word}
+.numbers{font-size:11.5px;color:var(--muted);line-height:1.55;margin-top:5px;word-break:break-word;font-family:var(--mono);font-variant-numeric:tabular-nums}
+/* 趋势票数天平条：从正中向两侧生长，装的是票数差 */
+.balbar{position:relative;height:6px;background:#1a1f16;border-radius:3px;margin:8px 0 3px;overflow:hidden}
+.bal-mid{position:absolute;left:50%;top:0;bottom:0;width:1px;background:#4a5540}
+.bal-fill{position:absolute;top:0;bottom:0;border-radius:3px}
+.bal-cap{font-size:11px;color:var(--muted)}
+.pips{font-size:9px;letter-spacing:2px;vertical-align:2px}
 details{margin-top:7px}
-summary{font-size:12px;color:#c6f542;cursor:pointer}
-.factor{font-size:11.5px;color:#bdbdbd;line-height:1.6;border-top:1px solid #1c1c1c;padding:3px 0}
-.ledger-item{background:#0d0d0d;border:1px solid #262626;border-radius:10px;padding:11px 12px;margin-bottom:8px;font-size:13px;line-height:1.6;word-break:break-word}
-.badge{font-weight:700}
+summary{font-size:12px;color:var(--accent);cursor:pointer}
+.factor{font-size:11.5px;color:#bdbdbd;line-height:1.6;border-top:1px solid #1c1c1c;padding:3px 6px;border-radius:4px}
+.factor .fdot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px;background:#555}
+.factor.f-up{background:rgba(43,234,121,.07)}.factor.f-up .fdot{background:var(--up)}
+.factor.f-down{background:rgba(255,55,97,.07)}.factor.f-down .fdot{background:var(--down)}
+.factor.f-flat .fdot{background:var(--accent)}
+/* 台账 */
+.ledger-item{background:var(--inner);border:1px solid var(--line);border-radius:10px;padding:11px 12px;margin-bottom:8px;font-size:13px;line-height:1.6;word-break:break-word}
+.badge{font-weight:700;padding:1px 7px;border-radius:999px;border:1px solid;font-size:12px;white-space:nowrap}
+.badge.up{color:var(--up);border-color:rgba(43,234,121,.45);background:rgba(43,234,121,.10)}
+.badge.down{color:var(--down);border-color:rgba(255,55,97,.45);background:rgba(255,55,97,.10)}
+.badge.flat{color:var(--accent);border-color:rgba(198,245,66,.45);background:rgba(198,245,66,.08)}
 footer{color:#777;font-size:12px;line-height:1.7;border-top:1px solid #222;padding-top:12px;margin-top:8px}
+@media(max-width:560px){
+  .grid{grid-template-columns:repeat(2,1fr);gap:8px}
+  .score .num{font-size:25px}
+  h1{font-size:22px}
+  .symhead .price{font-size:21px}
+  .gauge{width:104px}
+  .panel-b{padding:10px}
+}

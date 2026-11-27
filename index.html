@@ -17,29 +17,40 @@
   <div class="contact">联系<br><a href="https://t.me/fan1ab" rel="noopener">Telegram @fan1ab</a><br><a href="mailto:xiaofanlab@gmail.com">xiaofanlab@gmail.com</a></div>
 </header>
 
-<section>
-  <h2>已结清战绩（只统计已结清记录）</h2>
-  <div class="scoreboard" id="scoreboard">
-    <div class="score"><div class="num" id="sc-settled">—</div><div class="lab">已结清样本数</div></div>
-    <div class="score"><div class="num" id="sc-rate">—</div><div class="lab">命中率（带样本数，只算已结清的方向记录）</div></div>
-    <div class="score"><div class="num" id="sc-hits">—</div><div class="lab">命中 / 未命中</div></div>
-    <div class="score"><div class="num accent" id="sc-open">—</div><div class="lab">进行中记录（未结清，不计战绩）</div></div>
+<section class="panel">
+  <div class="panel-h"><h2>已结清战绩</h2><span class="hint">只统计已结清记录</span></div>
+  <div class="panel-b">
+    <div class="scoreboard" id="scoreboard">
+      <div class="score"><div class="num" id="sc-settled">—</div><div class="lab">已结清样本数</div></div>
+      <div class="score"><div class="num" id="sc-rate">—</div><div class="lab">命中率（带样本数，只算已结清的方向记录）</div></div>
+      <div class="score"><div class="num" id="sc-hits">—</div><div class="lab">命中 / 未命中</div></div>
+      <div class="score"><div class="num accent" id="sc-open">—</div><div class="lab">进行中记录（未结清，不计战绩）</div></div>
+    </div>
+    <div class="hitbar" id="hitbar">
+      <div class="hb-seg hb-hit" id="hb-hit"><span id="hb-hit-lab">命中 0</span></div>
+      <div class="hb-seg hb-miss" id="hb-miss"><span id="hb-miss-lab">未命中 0</span></div>
+    </div>
+    <p class="numbers" id="sc-note">战绩来自下方公开台账，每条可核对时间、价格与结清结果；台账只追加，不修改、不删除。</p>
   </div>
-  <p class="numbers" id="sc-note">战绩来自下方公开台账，每条可核对时间、价格与结清结果；台账只追加，不修改、不删除。</p>
 </section>
 
-<section>
-  <h2>各标的方向（正式信号只用已收盘 K 线）</h2>
-  <div id="symbols"></div>
+<section class="panel">
+  <div class="panel-h"><h2>各标的方向</h2><span class="hint">正式信号只用已收盘 K 线</span></div>
+  <div class="panel-b">
+    <div id="symbols"></div>
+  </div>
 </section>
 
-<section>
-  <h2>可核验台账（只追加，不修改不删除）</h2>
-  <div id="ledger"></div>
+<section class="panel">
+  <div class="panel-h"><h2>可核验台账</h2><span class="hint">只追加，不修改不删除</span></div>
+  <div class="panel-b">
+    <div id="ledger"></div>
+  </div>
 </section>
 
 <footer>
   <p>口径：正式信号周期只有 4小时 / 日线 / 周线 / 月线，全部只用已收盘 K 线；短周期不进正式信号、不进台账。动量与趋势分开呈现：动量按 MACD 动量结构判定，趋势按均线类趋势因子投票判定，两者分歧时综合方向记中性（观察）。本站不出现任何冒充胜率的合成百分比；因子投票只以票数形式展示。</p>
+  <p>仪表盘口径：每张卡的半圆仪表盘只显示该周期全部因子的投票平衡。指针位置 =（多票 − 空票）÷（多票 + 空票），最左为全空、最右为全多、正中为多空持平；它反映的是因子投票，不是概率、不是胜率。</p>
   <p>数据源：主源 Gate.io 现货公开接口，兜底 Binance Vision；每张卡片标注实际来源与所用 K 线根数。周线由日线按周一对齐重采样，月线按 UTC 自然月重采样，只取已结束的周/月。</p>
   <p>美股不在 v1 范围。台账定时脚本按收盘节奏重算、结清、追加；历史记录永不改写。</p>
   <p>仅供信息展示与学习，不构成投资建议或交易依据；市场有风险，盈亏自负。</p>
