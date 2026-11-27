@@ -7,7 +7,7 @@
 - 呈现：动量与趋势分开。动量按 MACD 动量结构判定（金叉状态 / 柱放大向下 / 柱连续收敛的修复结构，定义在 `tools/engine.py` 并公开）；趋势按均线类趋势因子投票判定。分歧时综合方向记中性（观察）。
 - 没有合成百分比：因子只展示票数和原始数值；命中率只统计台账里已结清的方向记录，并同时展示样本数。
 - 数据源：主源 Gate.io 现货公开接口，兜底 Binance Vision；长历史段不足时由 Binance Vision 补全并在来源里标注。周线由日线按周一对齐重采样，月线按 UTC 自然月重采样，只取已结束的周/月。
-- 联系：Telegram @fan1ab · xiaofanlab@gmail.com
+- 联系：Telegram @onefanlab · xiaofanlab@gmail.com
 
 ## 台账（只追加）
 

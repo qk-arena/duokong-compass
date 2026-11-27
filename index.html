@@ -14,8 +14,20 @@
     <h1>多空罗盘</h1>
     <div class="tag">数据为王 · 结果为王</div>
   </div>
-  <div class="contact">联系<br><a href="https://t.me/fan1ab" rel="noopener">Telegram @fan1ab</a><br><a href="mailto:xiaofanlab@gmail.com">xiaofanlab@gmail.com</a></div>
+  <div class="contact">联系<br><a href="https://t.me/onefanlab" rel="noopener">Telegram @onefanlab</a><br><a href="mailto:xiaofanlab@gmail.com">xiaofanlab@gmail.com</a></div>
 </header>
+<p class="subtitle">多空因子投票看板 · 4 小时 / 日线 / 周线 / 月线 · 只用已收盘 K 线</p>
+
+<div class="statusrow">
+  <span class="capsule" id="cap-source">主源 Gate.io</span>
+  <span class="capsule">只用已收盘 K 线</span>
+  <span class="capsule" id="cap-symbols">— 个标的 · 4 周期</span>
+  <span class="capsule" id="cap-factors">— 个因子 · 票数制</span>
+  <span class="capsule" id="cap-updated">更新 —</span>
+  <button class="refreshbtn" id="refresh" type="button">刷新数据</button>
+</div>
+
+<p class="note-short">口径：半圆仪表盘显示的是因子投票平衡（多票对空票），不是概率、不是胜率；动量与趋势分开呈现，两者分歧时综合记中性（观察）。</p>
 
 <section class="panel">
   <div class="panel-h"><h2>已结清战绩</h2><span class="hint">只统计已结清记录</span></div>
@@ -35,9 +47,13 @@
 </section>
 
 <section class="panel">
-  <div class="panel-h"><h2>各标的方向</h2><span class="hint">正式信号只用已收盘 K 线</span></div>
+  <div class="panel-h"><h2>标的</h2><span class="hint">点选芯片切换详情 · 因子格：绿多 / 红空 / 黄中</span></div>
   <div class="panel-b">
-    <div id="symbols"></div>
+    <div class="sympanel">
+      <div class="rail">加密</div>
+      <div class="chipgrid" id="chips"></div>
+    </div>
+    <div id="detail"></div>
   </div>
 </section>
 
@@ -48,13 +64,43 @@
   </div>
 </section>
 
+<section class="panel">
+  <div class="panel-h"><h2>联系我们</h2><span class="hint">全产品同一联系口径</span></div>
+  <div class="panel-b contact-b">
+    <div class="contact-brand">
+      <img src="logo.svg" alt="多空罗盘 logo">
+      <div>
+        <div class="cb-name">多空罗盘</div>
+        <div class="cb-sub">一凡实验室出品 · 数据为王 · 结果为王</div>
+      </div>
+    </div>
+    <a class="contact-card" href="https://t.me/onefanlab" rel="noopener">
+      <span class="cc-lab">Telegram</span>
+      <span class="cc-val">@onefanlab</span>
+      <span class="cc-arrow">›</span>
+    </a>
+    <a class="contact-card" href="mailto:xiaofanlab@gmail.com">
+      <span class="cc-lab">邮箱</span>
+      <span class="cc-val">xiaofanlab@gmail.com</span>
+      <span class="cc-arrow">›</span>
+    </a>
+  </div>
+</section>
+
 <footer>
+  <div class="foot-brand">
+    <img src="logo.svg" alt="多空罗盘 logo">
+    <div>
+      <span>多空罗盘</span>
+      <div class="foot-prod">一凡实验室出品 · OneFan Lab</div>
+    </div>
+  </div>
   <p>口径：正式信号周期只有 4小时 / 日线 / 周线 / 月线，全部只用已收盘 K 线；短周期不进正式信号、不进台账。动量与趋势分开呈现：动量按 MACD 动量结构判定，趋势按均线类趋势因子投票判定，两者分歧时综合方向记中性（观察）。本站不出现任何冒充胜率的合成百分比；因子投票只以票数形式展示。</p>
-  <p>仪表盘口径：每张卡的半圆仪表盘只显示该周期全部因子的投票平衡。指针位置 =（多票 − 空票）÷（多票 + 空票），最左为全空、最右为全多、正中为多空持平；它反映的是因子投票，不是概率、不是胜率。</p>
+  <p>仪表盘口径：每张卡的半圆仪表盘只显示该周期全部因子的投票平衡。指针位置 =（多票 − 空票）÷（多票 + 空票），最左为全空、最右为全多、正中为多空持平；它反映的是因子投票，不是概率、不是胜率。芯片上的综合方向与票数是该标的四个周期因子票数的合计，同样只是票数。</p>
   <p>数据源：主源 Gate.io 现货公开接口，兜底 Binance Vision；每张卡片标注实际来源与所用 K 线根数。周线由日线按周一对齐重采样，月线按 UTC 自然月重采样，只取已结束的周/月。</p>
   <p>美股不在 v1 范围。台账定时脚本按收盘节奏重算、结清、追加；历史记录永不改写。</p>
   <p>仅供信息展示与学习，不构成投资建议或交易依据；市场有风险，盈亏自负。</p>
-  <p>联系：Telegram @fan1ab · xiaofanlab@gmail.com</p>
+  <p>联系：Telegram @onefanlab · xiaofanlab@gmail.com</p>
   <p id="gen"></p>
 </footer>
 <script src="app.js"></script>
