@@ -1,0 +1,26 @@
+name: update-ledger
+# 定时重算信号、结清旧记录、追加新记录，并把数据文件提交回仓库。
+# 注意：本工作流文件随仓库提供，是否在 GitHub 侧实际启用以仓库 Actions 页面为准；
+# VM 侧另有同节奏的定时任务跑同一个脚本（tools/update.py），两边都幂等、按 K 线时间去重。
+on:
+  schedule:
+    - cron: "12 */4 * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python3 tools/update.py
+      - name: Commit appended data
+        run: |
+          git config user.name "duokong-compass-bot"
+          git config user.email "bot@localhost"
+          git add data/
+          git diff --cached --quiet || git commit -m "ledger update"
+          git push
