@@ -161,6 +161,27 @@
       .warnbox.danger{border-color:rgba(242,96,74,.55);background:rgba(242,96,74,.16)}  /* 状态键：危险=红，钉死 */
       .risk-note{font-size:11.5px;color:var(--ink3);line-height:1.6}
 
+      /* ---------- 仓位纪律（观点 KOL 通用框架） ---------- */
+      .disc{border-top:1px dashed var(--line2);padding-top:10px}
+      .disc h3{margin:0 0 4px;font-size:13.5px;font-weight:900}
+      .disc-src{font-size:11.5px;color:var(--gold);margin:0 0 6px}
+      .disc-rules{margin:0 0 8px;padding-left:18px;font-size:12.5px;color:var(--ink2);line-height:1.75}
+      .disc-lab{display:block;font-size:12.5px;color:var(--ink2);margin:8px 0 2px}
+      .disc input[type=range]{width:100%;accent-color:#8494a7;margin:2px 0}
+      .occbar{height:9px;border-radius:5px;background:#334154;position:relative;margin:7px 0 5px}
+      .occbar i{position:absolute;left:0;top:0;bottom:0;border-radius:5px;background:#8494a7;transition:width .12s,background .12s}
+      .occbar em{position:absolute;top:-2px;bottom:-2px;width:2px;background:#0d1219;opacity:.85}
+      .occ-out{font-size:12.5px;font-weight:700;line-height:1.6}
+      .disc-advice{font-size:12.5px;color:var(--ink2);line-height:1.65;background:#1b232f;border-radius:8px;padding:8px 11px;margin-top:8px}
+
+      /* ---------- 仪表卡内 KOL 体系行（斐波那契 / 周期定位） ---------- */
+      .gauge .kol{border-top:1px dashed var(--line2);margin-top:7px;padding-top:6px;font-size:11.5px;color:var(--ink2);line-height:1.6;text-align:left}
+      .gauge .kol .kol-h{font-size:11px;font-weight:700;color:var(--gold);letter-spacing:.03em;margin-bottom:2px}
+      .gauge .kol .krow{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+      .gauge .kol .klab{color:var(--ink3);font-size:11px;letter-spacing:.02em;white-space:nowrap}
+      .gauge .kol .krow b{font-family:var(--mono);color:var(--ink);font-weight:600;font-size:11.5px;white-space:nowrap}
+      .gauge .kol .knote{font-size:10.5px;color:var(--ink3);line-height:1.5;margin-top:1px}
+
       /* ---------- 方法与页脚 ---------- */
       .method{margin-top:18px;padding:14px 16px;font-size:12.5px;color:var(--ink2);line-height:1.8}
       .method h2{margin:0 0 6px;font-size:14px;color:var(--ink)}
@@ -276,6 +297,23 @@
               <label>止损距离（× ATR）<input id="inAtrMult" type="number" inputmode="decimal" value="2" min="0" step="0.5" /></label>
               <div class="out" id="calcOut">等待日线数据…</div>
               <p class="risk-note">公式：可承受亏损 = 资金 × 风险%；止损距离 = ATR 倍数 × ATR(14)；建议名义仓位 = 可承受亏损 ÷（止损距离 ÷ 价格）。这是仓位上限的估算方法，不是开仓建议；未计手续费、滑点与跳空。</p>
+            </div>
+            <div class="disc">
+              <h3>仓位纪律</h3>
+              <p class="disc-src">纪律来源：观点 KOL 通用仓位框架</p>
+              <ul class="disc-rules">
+                <li>单笔仓位不超过总预算的五分之一（20%）</li>
+                <li>组合仓位占用到八成（80%）开始分批减仓</li>
+                <li>组合仓位占用到九成（90%）全部清仓</li>
+                <li>组合亏损超过一成（10%）立即止损</li>
+                <li>总杠杆上限 3 倍</li>
+              </ul>
+              <label class="disc-lab" for="inOcc">组合仓位占用（自己拖动对照，不是账户数据）</label>
+              <input id="inOcc" type="range" min="0" max="100" step="1" value="30" />
+              <div class="occbar"><i id="occFill" style="width:30%"></i><em style="left:80%"></em><em style="left:90%"></em></div>
+              <div class="occ-out" id="occOut">占用 30% · 可建仓</div>
+              <div class="disc-advice" id="discAdvice">日线信号加载中…</div>
+              <p class="risk-note">这是纪律标尺，不是你的账户数据：本产品没有你的真实持仓，占用比例由你自己拖动对照；下方建议句只依据当前标的的日线综合方向与上面五条规则生成。</p>
             </div>
             <div class="warnbox" id="fundWarn" hidden></div>
             <div class="warnbox">
@@ -1954,7 +1992,7 @@
       var p=isCrypto(sym)? fetchCryptoQuote(sym) : fetchStockQuote(sym);
       return p.then(function(q){
         state.quotes[sym]={price:q.price, chgPct:q.chgPct, source:q.source, at:Date.now()};
-        if (sym===state.symbol) renderSymHead();
+        if (sym===state.symbol){ renderSymHead(); renderGauges(); }  /* 仪表卡内的斐波/周期定位用实时价，报价到达后重绘 */
       }).catch(function(){ /* 报价失败保留旧值，头部以 K 线收盘兜底 */ });
     }
     function loadSymbol(sym){
@@ -2094,6 +2132,72 @@
         $("symChg").className="chg num "+(chg>=0?"up":"down");
       } else { $("symChg").textContent=""; }
     }
+    /* ---------------- KOL 体系：斐波那契价位（Bluntz）+ 大周期定位（capitalnvest） ----------------
+       斐波那契：取该周期最近 150 根已收盘 K 线，摆动高低点的先后定腿向，0.618 入场参考 / 0.786 止损参考；
+       周期定位：用该周期全部已收盘历史的高低点算现价分位。现价优先用实时报价，无报价时用最后一根收盘价并注明。 */
+    var FIB_TFS={"4h":1,"1d":1,"1w":1,"1M":1}, CYC_TFS={"1w":1,"1M":1};
+    function fmtPctS(v, dec){ return isF(v)? ((v>=0?"+":"−")+Math.abs(v).toFixed(dec)+"%") : "—"; }
+    function curPrice(sym, closed){
+      var q=state.quotes[sym];
+      if (q && isF(q.price) && q.price>0) return {price:q.price, live:true};
+      return {price:(closed && closed.c.length)? closed.c[closed.c.length-1] : NaN, live:false};
+    }
+    function fibCalc(sym, tfId){
+      var s=state.series[skey(sym,tfId)];
+      if (!s || s.status!=="ok" || !s.closed) return null;
+      var cd=s.closed, n=cd.c.length;
+      var from=Math.max(0, n-150), cnt=n-from;
+      if (cnt<50) return {insufficient:true, cnt:cnt};
+      var hi=-Infinity, lo=Infinity, hiI=-1, loI=-1, i;
+      for (i=from;i<n;i++){
+        if (cd.h[i]>hi){ hi=cd.h[i]; hiI=i; }
+        if (cd.l[i]<lo){ lo=cd.l[i]; loI=i; }
+      }
+      if (!isF(hi) || !isF(lo) || hi<=lo) return {insufficient:true, cnt:cnt};
+      var range=hi-lo, entry, stop;
+      if (loI<hiI){ entry=hi-0.618*range; stop=hi-0.786*range; }  /* 上涨腿：低点在前、高点在后 */
+      else { entry=lo+0.618*range; stop=lo+0.786*range; }         /* 下跌腿：高点在前、低点在后 */
+      var cp=curPrice(sym, cd);
+      return {entry:entry, stop:stop, dist:isF(cp.price)? (cp.price/entry-1)*100 : NaN, live:cp.live, cnt:cnt};
+    }
+    function cycCalc(sym, tfId){
+      var s=state.series[skey(sym,tfId)];
+      if (!s || s.status!=="ok" || !s.closed) return null;
+      var cd=s.closed, n=cd.c.length;
+      if (n<10) return {insufficient:true, cnt:n};
+      var hi=-Infinity, lo=Infinity, i;
+      for (i=0;i<n;i++){ if (cd.h[i]>hi) hi=cd.h[i]; if (cd.l[i]<lo) lo=cd.l[i]; }
+      if (!isF(hi) || !isF(lo) || hi<=lo) return {insufficient:true, cnt:n};
+      var cp=curPrice(sym, cd);
+      if (!isF(cp.price)) return {insufficient:true, cnt:n};
+      return {pct:(cp.price-lo)/(hi-lo)*100, hi:hi, lo:lo,
+              dHi:(cp.price/hi-1)*100, dLo:(cp.price/lo-1)*100,
+              live:cp.live, cnt:n, shortHist:(!isCrypto(sym) || n<40)};
+    }
+    function kolBlock(sym, tf){
+      if (!FIB_TFS[tf.id]) return "";
+      var s=state.series[skey(sym,tf.id)];
+      if (!s || s.status!=="ok") return "";
+      var f=fibCalc(sym, tf.id), html="";
+      html+="<div class='kol fib'><div class='kol-h'>斐波那契 · Bluntz 体系</div>";
+      if (!f || f.insufficient) html+="<div class='knote'>数据不足</div>";
+      else html+="<div class='krow'><span class='klab'>入场参考 0.618</span><b>"+fmtPrice(f.entry)+"</b></div>"+
+                 "<div class='krow'><span class='klab'>止损参考 0.786</span><b>"+fmtPrice(f.stop)+"</b></div>"+
+                 "<div class='krow'><span class='klab'>现价距入场位</span><b>"+fmtPctS(f.dist,2)+"</b></div>"+
+                 (f.live? "" : "<div class='knote'>现价为最近收盘价</div>");
+      html+="</div>";
+      if (CYC_TFS[tf.id]){
+        var c=cycCalc(sym, tf.id);
+        html+="<div class='kol cyc'><div class='kol-h'>大周期定位 · capitalnvest 体系</div>";
+        if (!c || c.insufficient) html+="<div class='knote'>数据不足</div>";
+        else html+="<div class='krow'><span class='klab'>周期位置</span><b>"+c.pct.toFixed(1)+"%</b></div>"+
+                   "<div class='krow'><span class='klab'>距区间高点</span><b>"+fmtPctS(c.dHi,1)+"</b></div>"+
+                   "<div class='krow'><span class='klab'>距区间低点</span><b>"+fmtPctS(c.dLo,1)+"</b></div>"+
+                   "<div class='knote'>全历史区间 "+fmtPrice(c.lo)+" ~ "+fmtPrice(c.hi)+(c.live? "" : " · 现价为最近收盘价")+(c.shortHist? " · 历史较短" : "")+"</div>";
+        html+="</div>";
+      }
+      return html;
+    }
     /* ---------------- 渲染：仪表卡 ---------------- */
     function polar(cx,cy,r,deg){ var rad=deg*Math.PI/180; return [cx+r*Math.cos(rad), cy-r*Math.sin(rad)]; }
     function arcPath(cx,cy,r,a1,a2){
@@ -2170,6 +2274,7 @@
         "<div class='cap'>"+(bt? "历史命中率 · 样本 "+bt.n : "")+"</div>"+
         "<div class='scorebar'>"+barInner+"</div>"+
         "<div class='meta'>"+meta+"</div>"+
+        kolBlock(sym, tf)+
       "</div>";
     }
     function provText(tf, ev){ return ""; }
@@ -2281,6 +2386,7 @@
       $("rDd").textContent=rs&&isF(rs.maxDd)? (rs.maxDd*100).toFixed(1)+"%" : "—";
       $("rDdNow").textContent=rs&&isF(rs.ddNow)? (rs.ddNow*100).toFixed(1)+"%" : "—";
       renderCalc(rs);
+      renderDisc();
       var fw=$("fundWarn");
       fw.hidden=true; // 衍生品快照口径已废除，不再显示资金费率提示
     }
@@ -2296,6 +2402,27 @@
       out.innerHTML="可承受亏损 <b>"+riskAmt.toLocaleString("en-US",{maximumFractionDigits:0})+"</b> · 止损距离 <b>"+fmtPrice(stopDist)+"</b>（"+mult+"×ATR）<br>"+
         "建议名义仓位上限 ≈ <b>"+notional.toLocaleString("en-US",{maximumFractionDigits:0})+"</b>（约 <b>"+units.toFixed(units<1?4:2)+"</b> 个单位）<br>"+
         "参考止损价：做多 <b>"+fmtPrice(rs.price-stopDist)+"</b> · 做空 <b>"+fmtPrice(rs.price+stopDist)+"</b>（现价 "+fmtPrice(rs.price)+"）";
+    }
+    /* ---------------- 仓位纪律（观点 KOL 通用仓位框架） ---------------- */
+    function renderDisc(){
+      var v=parseFloat($("inOcc").value);
+      if (!isF(v)) v=0;
+      var fill=$("occFill"), out=$("occOut"), col, txt;
+      if (v>=90){ col="#f2604a"; txt="占用 "+v+"% · 全部清仓（已达九成清仓线）"; }
+      else if (v>=80){ col="#ddba6a"; txt="占用 "+v+"% · 分批减仓（已达八成减仓线）"; }
+      else { col="#8494a7"; txt="占用 "+v+"% · 可建仓（单笔仍受总预算 20% 上限约束）"; }
+      fill.style.width=v+"%";
+      fill.style.background=col;
+      out.style.color=col;
+      out.textContent=txt;
+      var ev=state.evals[skey(state.symbol,"1d")], dir=ev? ev.call_dir : null;
+      var adv=$("discAdvice"), nm=symName(state.symbol);
+      if (dir==="偏多" || dir==="偏空")
+        adv.textContent="当前 "+state.symbol+(nm? "（"+nm+"）" : "")+"日线综合方向"+dir+"：按纪律单笔上限为总预算 20%，总杠杆不超过 3 倍。";
+      else if (dir==="中性")
+        adv.textContent="当前 "+state.symbol+(nm? "（"+nm+"）" : "")+"日线综合方向中性：信号中性，按纪律观望，仓位 0。";
+      else
+        adv.textContent="日线信号加载中，暂无纪律建议。";
     }
     /* ---------------- 渲染：数据源状态 ---------------- */
     function renderSrcStat(){
@@ -2374,6 +2501,7 @@
     ["inCapital","inRiskPct","inAtrMult"].forEach(function(id){
       $(id).addEventListener("input", function(){ renderCalc(riskStats(state.symbol)); });
     });
+    $("inOcc").addEventListener("input", renderDisc);
 
     function init(){
       renderChips(); renderTfBar(); renderDynamic();
