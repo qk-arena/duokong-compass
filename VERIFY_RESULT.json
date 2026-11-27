@@ -1,0 +1,364 @@
+{
+ "verified_at": "2026-11-27 08:17 UTC",
+ "scope": "BTC/ETH/SOL × 4h/日/周/月；Gate（主源） vs Binance Vision（第二源）+ 独立代码重算 MACD/RSI/Aroon",
+ "checks": [
+  {
+   "symbol": "BTC",
+   "tf": "4h",
+   "status": "已核",
+   "gate_bars": 399,
+   "binance_bars": 399,
+   "last_close_gate": 61663.7,
+   "last_close_binance": 61673.45,
+   "price_diff_pct": 0.0158,
+   "macd_gate": {
+    "dif": 103.47,
+    "dea": -147.72,
+    "hist": 502.37
+   },
+   "macd_binance_indep": {
+    "dif": 103.63,
+    "dea": -147.65,
+    "hist": 502.56
+   },
+   "macd_hist_sign_agree": true,
+   "rsi_gate": 59.54,
+   "rsi_binance_indep": 65.86,
+   "rsi_abs_diff": 6.32,
+   "aroon_gate": "Aroon 上 12 / 下 60",
+   "aroon_binance_indep": "Aroon 上 12 / 下 60",
+   "factor_votes_compared": 22,
+   "factor_votes_agree": 22,
+   "factor_vote_agreement_pct": 100.0,
+   "vote_mismatches": []
+  },
+  {
+   "symbol": "BTC",
+   "tf": "1d",
+   "status": "已核",
+   "gate_bars": 999,
+   "binance_bars": 999,
+   "last_close_gate": 60577.18,
+   "last_close_binance": 60577.18,
+   "price_diff_pct": 0.0,
+   "macd_gate": {
+    "dif": -4548.31,
+    "dea": -4463.88,
+    "hist": -168.86
+   },
+   "macd_binance_indep": {
+    "dif": -4548.31,
+    "dea": -4463.88,
+    "hist": -168.86
+   },
+   "macd_hist_sign_agree": true,
+   "rsi_gate": 27.71,
+   "rsi_binance_indep": 22.16,
+   "rsi_abs_diff": 5.55,
+   "aroon_gate": "Aroon 上 12 / 下 80",
+   "aroon_binance_indep": "Aroon 上 12 / 下 80",
+   "factor_votes_compared": 22,
+   "factor_votes_agree": 22,
+   "factor_vote_agreement_pct": 100.0,
+   "vote_mismatches": []
+  },
+  {
+   "symbol": "BTC",
+   "tf": "1w",
+   "status": "已核",
+   "gate_bars": 143,
+   "binance_bars": 399,
+   "last_close_gate": 61271.08,
+   "last_close_binance": 61271.08,
+   "price_diff_pct": 0.0,
+   "macd_gate": {
+    "dif": -720.77,
+    "dea": 566.06,
+    "hist": -2573.65
+   },
+   "macd_binance_indep": {
+    "dif": -720.23,
+    "dea": 566.85,
+    "hist": -2574.16
+   },
+   "macd_hist_sign_agree": true,
+   "rsi_gate": 35.4,
+   "rsi_binance_indep": 48.55,
+   "rsi_abs_diff": 13.15,
+   "aroon_gate": "Aroon 上 68 / 下 100",
+   "aroon_binance_indep": "Aroon 上 68 / 下 100",
+   "factor_votes_compared": 20,
+   "factor_votes_agree": 20,
+   "factor_vote_agreement_pct": 100.0,
+   "vote_mismatches": []
+  },
+  {
+   "symbol": "BTC",
+   "tf": "1M",
+   "status": "已核",
+   "gate_bars": 32,
+   "binance_bars": 111,
+   "last_close_gate": 77582.02,
+   "last_close_binance": 77582.02,
+   "price_diff_pct": 0.0,
+   "macd_gate": null,
+   "macd_binance_indep": {
+    "dif": 644.54,
+    "dea": 3438.54,
+    "hist": -5588.0
+   },
+   "macd_hist_sign_agree": false,
+   "rsi_gate": 49.29,
+   "rsi_binance_indep": 36.19,
+   "rsi_abs_diff": 13.1,
+   "aroon_gate": "Aroon 上 52 / 下 88",
+   "aroon_binance_indep": "Aroon 上 52 / 下 88",
+   "factor_votes_compared": 12,
+   "factor_votes_agree": 11,
+   "factor_vote_agreement_pct": 91.7,
+   "vote_mismatches": [
+    "EMA12/26"
+   ]
+  },
+  {
+   "symbol": "ETH",
+   "tf": "4h",
+   "status": "已核",
+   "gate_bars": 399,
+   "binance_bars": 399,
+   "last_close_gate": 1735.35,
+   "last_close_binance": 1735.44,
+   "price_diff_pct": 0.0052,
+   "macd_gate": {
+    "dif": 2.28,
+    "dea": -5.43,
+    "hist": 15.41
+   },
+   "macd_binance_indep": {
+    "dif": 2.29,
+    "dea": -5.41,
+    "hist": 15.41
+   },
+   "macd_hist_sign_agree": true,
+   "rsi_gate": 58.96,
+   "rsi_binance_indep": 63.89,
+   "rsi_abs_diff": 4.94,
+   "aroon_gate": "Aroon 上 12 / 下 60",
+   "aroon_binance_indep": "Aroon 上 12 / 下 60",
+   "factor_votes_compared": 22,
+   "factor_votes_agree": 22,
+   "factor_vote_agreement_pct": 100.0,
+   "vote_mismatches": []
+  },
+  {
+   "symbol": "ETH",
+   "tf": "1d",
+   "status": "已核",
+   "gate_bars": 1999,
+   "binance_bars": 999,
+   "last_close_gate": 1690.09,
+   "last_close_binance": 1689.85,
+   "price_diff_pct": 0.0142,
+   "macd_gate": {
+    "dif": -153.34,
+    "dea": -155.39,
+    "hist": 4.1
+   },
+   "macd_binance_indep": {
+    "dif": -153.37,
+    "dea": -155.4,
+    "hist": 4.07
+   },
+   "macd_hist_sign_agree": true,
+   "rsi_gate": 29.16,
+   "rsi_binance_indep": 26.37,
+   "rsi_abs_diff": 2.78,
+   "aroon_gate": "Aroon 上 12 / 下 80",
+   "aroon_binance_indep": "Aroon 上 12 / 下 80",
+   "factor_votes_compared": 22,
+   "factor_votes_agree": 22,
+   "factor_vote_agreement_pct": 100.0,
+   "vote_mismatches": []
+  },
+  {
+   "symbol": "ETH",
+   "tf": "1w",
+   "status": "已核",
+   "gate_bars": 285,
+   "binance_bars": 399,
+   "last_close_gate": 1724.15,
+   "last_close_binance": 1724.33,
+   "price_diff_pct": 0.0104,
+   "macd_gate": {
+    "dif": -47.94,
+    "dea": 10.88,
+    "hist": -117.64
+   },
+   "macd_binance_indep": {
+    "dif": -47.92,
+    "dea": 10.9,
+    "hist": -117.63
+   },
+   "macd_hist_sign_agree": true,
+   "rsi_gate": 34.77,
+   "rsi_binance_indep": 46.25,
+   "rsi_abs_diff": 11.48,
+   "aroon_gate": "Aroon 上 68 / 下 4",
+   "aroon_binance_indep": "Aroon 上 68 / 下 4",
+   "factor_votes_compared": 22,
+   "factor_votes_agree": 22,
+   "factor_vote_agreement_pct": 100.0,
+   "vote_mismatches": []
+  },
+  {
+   "symbol": "ETH",
+   "tf": "1M",
+   "status": "已核",
+   "gate_bars": 65,
+   "binance_bars": 111,
+   "last_close_gate": 2255.78,
+   "last_close_binance": 2255.66,
+   "price_diff_pct": 0.0053,
+   "macd_gate": {
+    "dif": -156.03,
+    "dea": -105.94,
+    "hist": -100.16
+   },
+   "macd_binance_indep": {
+    "dif": -133.87,
+    "dea": -73.45,
+    "hist": -120.84
+   },
+   "macd_hist_sign_agree": true,
+   "rsi_gate": 47.31,
+   "rsi_binance_indep": 28.42,
+   "rsi_abs_diff": 18.89,
+   "aroon_gate": "Aroon 上 44 / 下 28",
+   "aroon_binance_indep": "Aroon 上 44 / 下 28",
+   "factor_votes_compared": 18,
+   "factor_votes_agree": 17,
+   "factor_vote_agreement_pct": 94.4,
+   "vote_mismatches": [
+    "EWMAC16/64"
+   ]
+  },
+  {
+   "symbol": "SOL",
+   "tf": "4h",
+   "status": "已核",
+   "gate_bars": 399,
+   "binance_bars": 399,
+   "last_close_gate": 73.29,
+   "last_close_binance": 73.29,
+   "price_diff_pct": 0.0,
+   "macd_gate": {
+    "dif": 0.33,
+    "dea": -0.09,
+    "hist": 0.83
+   },
+   "macd_binance_indep": {
+    "dif": 0.33,
+    "dea": -0.09,
+    "hist": 0.83
+   },
+   "macd_hist_sign_agree": true,
+   "rsi_gate": 62.76,
+   "rsi_binance_indep": 70.55,
+   "rsi_abs_diff": 7.79,
+   "aroon_gate": "Aroon 上 12 / 下 60",
+   "aroon_binance_indep": "Aroon 上 12 / 下 60",
+   "factor_votes_compared": 22,
+   "factor_votes_agree": 22,
+   "factor_vote_agreement_pct": 100.0,
+   "vote_mismatches": []
+  },
+  {
+   "symbol": "SOL",
+   "tf": "1d",
+   "status": "已核",
+   "gate_bars": 999,
+   "binance_bars": 999,
+   "last_close_gate": 71.03,
+   "last_close_binance": 71.03,
+   "price_diff_pct": 0.0,
+   "macd_gate": {
+    "dif": -6.39,
+    "dea": -6.93,
+    "hist": 1.07
+   },
+   "macd_binance_indep": {
+    "dif": -6.39,
+    "dea": -6.93,
+    "hist": 1.07
+   },
+   "macd_hist_sign_agree": true,
+   "rsi_gate": 32.31,
+   "rsi_binance_indep": 33.23,
+   "rsi_abs_diff": 0.92,
+   "aroon_gate": "Aroon 上 12 / 下 80",
+   "aroon_binance_indep": "Aroon 上 12 / 下 80",
+   "factor_votes_compared": 22,
+   "factor_votes_agree": 22,
+   "factor_vote_agreement_pct": 100.0,
+   "vote_mismatches": []
+  },
+  {
+   "symbol": "SOL",
+   "tf": "1w",
+   "status": "已核",
+   "gate_bars": 143,
+   "binance_bars": 328,
+   "last_close_gate": 70.73,
+   "last_close_binance": 70.73,
+   "price_diff_pct": 0.0,
+   "macd_gate": {
+    "dif": -2.31,
+    "dea": 0.41,
+    "hist": -5.44
+   },
+   "macd_binance_indep": {
+    "dif": -2.31,
+    "dea": 0.41,
+    "hist": -5.44
+   },
+   "macd_hist_sign_agree": true,
+   "rsi_gate": 36.78,
+   "rsi_binance_indep": 48.29,
+   "rsi_abs_diff": 11.51,
+   "aroon_gate": "Aroon 上 68 / 下 4",
+   "aroon_binance_indep": "Aroon 上 68 / 下 4",
+   "factor_votes_compared": 20,
+   "factor_votes_agree": 20,
+   "factor_vote_agreement_pct": 100.0,
+   "vote_mismatches": []
+  },
+  {
+   "symbol": "SOL",
+   "tf": "1M",
+   "status": "已核",
+   "gate_bars": 32,
+   "binance_bars": 75,
+   "last_close_gate": 95.54,
+   "last_close_binance": 95.54,
+   "price_diff_pct": 0.0,
+   "macd_gate": null,
+   "macd_binance_indep": {
+    "dif": -10.86,
+    "dea": -5.73,
+    "hist": -10.26
+   },
+   "macd_hist_sign_agree": false,
+   "rsi_gate": 42.63,
+   "rsi_binance_indep": 25.18,
+   "rsi_abs_diff": 17.45,
+   "aroon_gate": "Aroon 上 16 / 下 84",
+   "aroon_binance_indep": "Aroon 上 16 / 下 84",
+   "factor_votes_compared": 12,
+   "factor_votes_agree": 11,
+   "factor_vote_agreement_pct": 91.7,
+   "vote_mismatches": [
+    "RSI"
+   ]
+  }
+ ]
+}
