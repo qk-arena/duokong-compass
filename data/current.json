@@ -1,0 +1,5348 @@
+{
+ "generated_at_utc": "2026-11-27 08:20 UTC",
+ "generated_at_bj": "2026-11-27 16:20",
+ "source_primary": "Gate.io 现货公开接口",
+ "source_fallback": "Binance Vision",
+ "note": "正式信号只用已收盘 K 线；动量与趋势分开；无合成概率；美股不在 v1 范围",
+ "symbols": [
+  {
+   "symbol": "BTC",
+   "timeframes": {
+    "4h": {
+     "momentum_dir": "偏多",
+     "momentum_basis": "MACD 金叉状态，柱 +502.37",
+     "trend_dir": "中性",
+     "call_dir": "偏多",
+     "momentum_votes": {
+      "pos": 5,
+      "neg": 3,
+      "valid": 9
+     },
+     "trend_votes": {
+      "pos": 7,
+      "neg": 6,
+      "valid": 13
+     },
+     "macd": {
+      "dif": 103.47,
+      "dea": -147.72,
+      "hist": 502.37,
+      "hist5": [
+       382.38,
+       392.65,
+       366.01,
+       442.58,
+       502.37
+      ],
+      "cross_bars_ago": 8,
+      "cross_kind": "金叉"
+     },
+     "sma50": 60593.48,
+     "sma200": 71053.58,
+     "atr_pct": 1.77,
+     "vol20_pct": 0.91,
+     "maxdd120_pct": -18.94,
+     "factors": [
+      {
+       "name": "MACD",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "MACD DIF 103.47 / DEA -147.72 / 柱 +502.37"
+      },
+      {
+       "name": "RSI",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "RSI14 59.5"
+      },
+      {
+       "name": "ROC10",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "ROC10 +5.70%"
+      },
+      {
+       "name": "ROC60",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "ROC60 -4.75%"
+      },
+      {
+       "name": "随机指标",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "随机 %K 93 / %D 86"
+      },
+      {
+       "name": "CCI",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "CCI20 151"
+      },
+      {
+       "name": "Aroon",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "Aroon 上 12 / 下 60"
+      },
+      {
+       "name": "ADX/DMI",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "ADX 12 / +DI 24 / -DI 19"
+      },
+      {
+       "name": "OBV量能",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "OBV 20期均值方向"
+      },
+      {
+       "name": "SMA20/50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "SMA20 60145.37 / SMA50 60593.48"
+      },
+      {
+       "name": "SMA50/200",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "SMA50 60593.48 / SMA200 71053.58"
+      },
+      {
+       "name": "EMA12/26",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "EMA12 60672.06 / EMA26 60568.59"
+      },
+      {
+       "name": "EWMAC16/64",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EWMAC16/64 标准化 -2.37"
+      },
+      {
+       "name": "唐奇安20",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "唐奇安20 中轨 59581.40"
+      },
+      {
+       "name": "Supertrend",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "Supertrend ATR带 58584.02~64769.48"
+      },
+      {
+       "name": "PSAR",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "PSAR 多头侧 57957.54"
+      },
+      {
+       "name": "一目均衡",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "一目 云顶 60926.12 / 云底 59858.40"
+      },
+      {
+       "name": "线性回归50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "线性回归50 标准化斜率 -2.40"
+      },
+      {
+       "name": "价vsSMA50",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "价 / SMA50 60593.48"
+      },
+      {
+       "name": "价vsSMA200",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "价 / SMA200 71053.58"
+      },
+      {
+       "name": "TSMOM120",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "TSMOM120 -19.0%"
+      },
+      {
+       "name": "布林中轨",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "布林中轨 60145.37"
+      }
+     ],
+     "last_close": 61663.7,
+     "last_candle_t": 1795752000,
+     "bars": 399,
+     "source": "Gate.io"
+    },
+    "1d": {
+     "momentum_dir": "偏多",
+     "momentum_basis": "修复结构：柱连续 5 根收敛（-1519→-169），DIF 上行向零轴回归",
+     "trend_dir": "偏空",
+     "call_dir": "中性",
+     "momentum_votes": {
+      "pos": 0,
+      "neg": 7,
+      "valid": 9
+     },
+     "trend_votes": {
+      "pos": 3,
+      "neg": 9,
+      "valid": 13
+     },
+     "macd": {
+      "dif": -4547.34,
+      "dea": -4462.69,
+      "hist": -169.29,
+      "hist5": [
+       -1519.04,
+       -1079.79,
+       -854.79,
+       -509.17,
+       -169.29
+      ],
+      "cross_bars_ago": 58,
+      "cross_kind": "死叉"
+     },
+     "sma50": 74777.43,
+     "sma200": 71979.0,
+     "atr_pct": 4.9,
+     "vol20_pct": 2.29,
+     "maxdd120_pct": -30.06,
+     "factors": [
+      {
+       "name": "MACD",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "MACD DIF -4547.34 / DEA -4462.69 / 柱 -169.29"
+      },
+      {
+       "name": "RSI",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "RSI14 27.7"
+      },
+      {
+       "name": "ROC10",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "ROC10 -6.64%"
+      },
+      {
+       "name": "ROC60",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "ROC60 -28.29%"
+      },
+      {
+       "name": "随机指标",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "随机 %K 33 / %D 28"
+      },
+      {
+       "name": "CCI",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "CCI20 -68"
+      },
+      {
+       "name": "Aroon",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "Aroon 上 12 / 下 80"
+      },
+      {
+       "name": "ADX/DMI",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "ADX 66 / +DI 12 / -DI 37"
+      },
+      {
+       "name": "OBV量能",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "OBV 20期均值方向"
+      },
+      {
+       "name": "SMA20/50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "SMA20 66030.68 / SMA50 74777.43"
+      },
+      {
+       "name": "SMA50/200",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "SMA50 74777.43 / SMA200 71979.00"
+      },
+      {
+       "name": "EMA12/26",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EMA12 62688.19 / EMA26 67235.53"
+      },
+      {
+       "name": "EWMAC16/64",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EWMAC16/64 标准化 -5.70"
+      },
+      {
+       "name": "唐奇安20",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "唐奇安20 中轨 65770.20"
+      },
+      {
+       "name": "Supertrend",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "Supertrend ATR带 51559.18~69998.52"
+      },
+      {
+       "name": "PSAR",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "PSAR 多头侧 55679.96"
+      },
+      {
+       "name": "一目均衡",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "一目 云顶 70908.95 / 云底 64109.18"
+      },
+      {
+       "name": "线性回归50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "线性回归50 标准化斜率 -19.03"
+      },
+      {
+       "name": "价vsSMA50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "价 / SMA50 74777.43"
+      },
+      {
+       "name": "价vsSMA200",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "价 / SMA200 71979.00"
+      },
+      {
+       "name": "TSMOM120",
+       "cat": "trend",
+       "vote": 0,
+       "detail": "TSMOM120 -5.3%"
+      },
+      {
+       "name": "布林中轨",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "布林中轨 66030.68"
+      }
+     ],
+     "last_close": 60576.5,
+     "last_candle_t": 1795651200,
+     "bars": 1999,
+     "source": "Gate.io"
+    },
+    "1w": {
+     "momentum_dir": "偏空",
+     "momentum_basis": "MACD 死叉且柱连续放大向下，柱 -2573.69",
+     "trend_dir": "偏空",
+     "call_dir": "偏空",
+     "momentum_votes": {
+      "pos": 0,
+      "neg": 8,
+      "valid": 9
+     },
+     "trend_votes": {
+      "pos": 1,
+      "neg": 11,
+      "valid": 13
+     },
+     "macd": {
+      "dif": -720.66,
+      "dea": 566.19,
+      "hist": -2573.69,
+      "hist5": [
+       3599.91,
+       2556.98,
+       1308.63,
+       -772.73,
+       -2573.69
+      ],
+      "cross_bars_ago": 1,
+      "cross_kind": "死叉"
+     },
+     "sma50": 74449.84,
+     "sma200": 68174.65,
+     "atr_pct": 11.4,
+     "vol20_pct": 6.75,
+     "maxdd120_pct": -50.38,
+     "factors": [
+      {
+       "name": "MACD",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "MACD DIF -720.66 / DEA 566.19 / 柱 -2573.69"
+      },
+      {
+       "name": "RSI",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "RSI14 35.4"
+      },
+      {
+       "name": "ROC10",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "ROC10 -20.25%"
+      },
+      {
+       "name": "ROC60",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "ROC60 -45.38%"
+      },
+      {
+       "name": "随机指标",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "随机 %K 19 / %D 27"
+      },
+      {
+       "name": "CCI",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "CCI20 -112"
+      },
+      {
+       "name": "Aroon",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "Aroon 上 68 / 下 100"
+      },
+      {
+       "name": "ADX/DMI",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "ADX 20 / +DI 14 / -DI 33"
+      },
+      {
+       "name": "OBV量能",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "OBV 20期均值方向"
+      },
+      {
+       "name": "SMA20/50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "SMA20 73793.54 / SMA50 74449.84"
+      },
+      {
+       "name": "SMA50/200",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "SMA50 74449.84 / SMA200 68174.65"
+      },
+      {
+       "name": "EMA12/26",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EMA12 73840.53 / EMA26 74561.18"
+      },
+      {
+       "name": "EWMAC16/64",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EWMAC16/64 标准化 -1.00"
+      },
+      {
+       "name": "唐奇安20",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "唐奇安20 中轨 72607.45"
+      },
+      {
+       "name": "Supertrend",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "Supertrend ATR带 38874.99~81931.51"
+      },
+      {
+       "name": "PSAR",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "PSAR 空头侧 86893.55"
+      },
+      {
+       "name": "一目均衡",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "一目 云顶 76532.30 / 云底 71262.25"
+      },
+      {
+       "name": "线性回归50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "线性回归50 标准化斜率 -1.92"
+      },
+      {
+       "name": "价vsSMA50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "价 / SMA50 74449.84"
+      },
+      {
+       "name": "价vsSMA200",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "价 / SMA200 68174.65"
+      },
+      {
+       "name": "TSMOM120",
+       "cat": "trend",
+       "vote": 0,
+       "detail": "TSMOM120 +5.4%"
+      },
+      {
+       "name": "布林中轨",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "布林中轨 73793.54"
+      }
+     ],
+     "last_close": 61270.6,
+     "last_candle_t": 1794787200,
+     "bars": 285,
+     "source": "Gate.io 日线重采样（周一对齐）"
+    },
+    "1M": {
+     "momentum_dir": "偏多",
+     "momentum_basis": "修复结构：柱连续 5 根收敛（-12164→-5369），DIF 上行向零轴回归",
+     "trend_dir": "中性",
+     "call_dir": "偏多",
+     "momentum_votes": {
+      "pos": 0,
+      "neg": 4,
+      "valid": 8
+     },
+     "trend_votes": {
+      "pos": 5,
+      "neg": 4,
+      "valid": 10
+     },
+     "macd": {
+      "dif": 401.76,
+      "dea": 3086.31,
+      "hist": -5369.1,
+      "hist5": [
+       -12164.07,
+       -11945.8,
+       -9283.88,
+       -6570.15,
+       -5369.1
+      ],
+      "cross_bars_ago": 11,
+      "cross_kind": "死叉"
+     },
+     "sma50": 63430.28,
+     "sma200": null,
+     "atr_pct": 19.65,
+     "vol20_pct": 11.11,
+     "maxdd120_pct": -33.02,
+     "factors": [
+      {
+       "name": "MACD",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "MACD DIF 401.76 / DEA 3086.31 / 柱 -5369.10"
+      },
+      {
+       "name": "RSI",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "RSI14 50.3"
+      },
+      {
+       "name": "ROC10",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "ROC10 -11.53%"
+      },
+      {
+       "name": "随机指标",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "随机 %K 29 / %D 32"
+      },
+      {
+       "name": "CCI",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "CCI20 -34"
+      },
+      {
+       "name": "Aroon",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "Aroon 上 52 / 下 88"
+      },
+      {
+       "name": "ADX/DMI",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "ADX 17 / +DI 23 / -DI 19"
+      },
+      {
+       "name": "OBV量能",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "OBV 20期均值方向"
+      },
+      {
+       "name": "SMA20/50",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "SMA20 86970.01 / SMA50 63430.28"
+      },
+      {
+       "name": "EMA12/26",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "EMA12 77916.33 / EMA26 77514.57"
+      },
+      {
+       "name": "EWMAC16/64",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "EWMAC16/64 标准化 +2.02"
+      },
+      {
+       "name": "唐奇安20",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "唐奇安20 中轨 92003.20"
+      },
+      {
+       "name": "Supertrend",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "Supertrend ATR带 36269.27~127250.03"
+      },
+      {
+       "name": "PSAR",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "PSAR 空头侧 92439.03"
+      },
+      {
+       "name": "一目均衡",
+       "cat": "trend",
+       "vote": 0,
+       "detail": "一目 云顶 80989.32 / 云底 70830.75"
+      },
+      {
+       "name": "线性回归50",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "线性回归50 标准化斜率 +9.24"
+      },
+      {
+       "name": "价vsSMA50",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "价 / SMA50 63430.28"
+      },
+      {
+       "name": "布林中轨",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "布林中轨 86970.01"
+      }
+     ],
+     "last_close": 77538.5,
+     "last_candle_t": 1790812800,
+     "bars": 65,
+     "source": "Gate.io 日线重采样（自然月）"
+    }
+   },
+   "price": 60576.5,
+   "price_source": "Gate.io"
+  },
+  {
+   "symbol": "ETH",
+   "timeframes": {
+    "4h": {
+     "momentum_dir": "偏多",
+     "momentum_basis": "MACD 金叉状态，柱 +15.41",
+     "trend_dir": "中性",
+     "call_dir": "偏多",
+     "momentum_votes": {
+      "pos": 6,
+      "neg": 2,
+      "valid": 9
+     },
+     "trend_votes": {
+      "pos": 7,
+      "neg": 6,
+      "valid": 13
+     },
+     "macd": {
+      "dif": 2.28,
+      "dea": -5.43,
+      "hist": 15.41,
+      "hist5": [
+       8.84,
+       10.22,
+       8.91,
+       12.7,
+       15.41
+      ],
+      "cross_bars_ago": 8,
+      "cross_kind": "金叉"
+     },
+     "sma50": 1701.85,
+     "sma200": 2036.5,
+     "atr_pct": 2.13,
+     "vol20_pct": 0.97,
+     "maxdd120_pct": -22.7,
+     "factors": [
+      {
+       "name": "MACD",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "MACD DIF 2.28 / DEA -5.43 / 柱 +15.41"
+      },
+      {
+       "name": "RSI",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "RSI14 59.0"
+      },
+      {
+       "name": "ROC10",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "ROC10 +5.27%"
+      },
+      {
+       "name": "ROC60",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "ROC60 -5.29%"
+      },
+      {
+       "name": "随机指标",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "随机 %K 87 / %D 82"
+      },
+      {
+       "name": "CCI",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "CCI20 192"
+      },
+      {
+       "name": "Aroon",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "Aroon 上 12 / 下 60"
+      },
+      {
+       "name": "ADX/DMI",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "ADX 9 / +DI 23 / -DI 17"
+      },
+      {
+       "name": "OBV量能",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "OBV 20期均值方向"
+      },
+      {
+       "name": "SMA20/50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "SMA20 1686.85 / SMA50 1701.85"
+      },
+      {
+       "name": "SMA50/200",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "SMA50 1701.85 / SMA200 2036.50"
+      },
+      {
+       "name": "EMA12/26",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "EMA12 1701.34 / EMA26 1699.06"
+      },
+      {
+       "name": "EWMAC16/64",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EWMAC16/64 标准化 -2.41"
+      },
+      {
+       "name": "唐奇安20",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "唐奇安20 中轨 1674.20"
+      },
+      {
+       "name": "Supertrend",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "Supertrend ATR带 1633.11~1847.57"
+      },
+      {
+       "name": "PSAR",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "PSAR 多头侧 1627.51"
+      },
+      {
+       "name": "一目均衡",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "一目 云顶 1719.18 / 云底 1691.46"
+      },
+      {
+       "name": "线性回归50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "线性回归50 标准化斜率 -2.81"
+      },
+      {
+       "name": "价vsSMA50",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "价 / SMA50 1701.85"
+      },
+      {
+       "name": "价vsSMA200",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "价 / SMA200 2036.50"
+      },
+      {
+       "name": "TSMOM120",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "TSMOM120 -22.7%"
+      },
+      {
+       "name": "布林中轨",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "布林中轨 1686.85"
+      }
+     ],
+     "last_close": 1735.35,
+     "last_candle_t": 1795752000,
+     "bars": 399,
+     "source": "Gate.io"
+    },
+    "1d": {
+     "momentum_dir": "偏多",
+     "momentum_basis": "MACD 金叉状态，柱 +4.10",
+     "trend_dir": "偏空",
+     "call_dir": "中性",
+     "momentum_votes": {
+      "pos": 1,
+      "neg": 6,
+      "valid": 9
+     },
+     "trend_votes": {
+      "pos": 2,
+      "neg": 10,
+      "valid": 13
+     },
+     "macd": {
+      "dif": -153.34,
+      "dea": -155.39,
+      "hist": 4.1,
+      "hist5": [
+       -36.06,
+       -23.4,
+       -15.39,
+       -5.13,
+       4.1
+      ],
+      "cross_bars_ago": 0,
+      "cross_kind": "金叉"
+     },
+     "sma50": 2169.9,
+     "sma200": 2111.31,
+     "atr_pct": 6.24,
+     "vol20_pct": 3.18,
+     "maxdd120_pct": -39.12,
+     "factors": [
+      {
+       "name": "MACD",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "MACD DIF -153.34 / DEA -155.39 / 柱 +4.10"
+      },
+      {
+       "name": "RSI",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "RSI14 29.2"
+      },
+      {
+       "name": "ROC10",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "ROC10 -7.18%"
+      },
+      {
+       "name": "ROC60",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "ROC60 -37.14%"
+      },
+      {
+       "name": "随机指标",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "随机 %K 31 / %D 29"
+      },
+      {
+       "name": "CCI",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "CCI20 -69"
+      },
+      {
+       "name": "Aroon",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "Aroon 上 12 / 下 80"
+      },
+      {
+       "name": "ADX/DMI",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "ADX 57 / +DI 14 / -DI 33"
+      },
+      {
+       "name": "OBV量能",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "OBV 20期均值方向"
+      },
+      {
+       "name": "SMA20/50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "SMA20 1857.67 / SMA50 2169.90"
+      },
+      {
+       "name": "SMA50/200",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "SMA50 2169.90 / SMA200 2111.31"
+      },
+      {
+       "name": "EMA12/26",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EMA12 1760.26 / EMA26 1913.60"
+      },
+      {
+       "name": "EWMAC16/64",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EWMAC16/64 标准化 -5.42"
+      },
+      {
+       "name": "唐奇安20",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "唐奇安20 中轨 1896.05"
+      },
+      {
+       "name": "Supertrend",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "Supertrend ATR带 1381.98~2015.85"
+      },
+      {
+       "name": "PSAR",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "PSAR 多头侧 1556.13"
+      },
+      {
+       "name": "一目均衡",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "一目 云顶 2131.55 / 云底 1842.83"
+      },
+      {
+       "name": "线性回归50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "线性回归50 标准化斜率 -17.47"
+      },
+      {
+       "name": "价vsSMA50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "价 / SMA50 2169.90"
+      },
+      {
+       "name": "价vsSMA200",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "价 / SMA200 2111.31"
+      },
+      {
+       "name": "TSMOM120",
+       "cat": "trend",
+       "vote": 0,
+       "detail": "TSMOM120 -11.5%"
+      },
+      {
+       "name": "布林中轨",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "布林中轨 1857.67"
+      }
+     ],
+     "last_close": 1690.09,
+     "last_candle_t": 1795651200,
+     "bars": 1999,
+     "source": "Gate.io"
+    },
+    "1w": {
+     "momentum_dir": "偏空",
+     "momentum_basis": "MACD 死叉且柱连续放大向下，柱 -117.64",
+     "trend_dir": "偏空",
+     "call_dir": "偏空",
+     "momentum_votes": {
+      "pos": 2,
+      "neg": 6,
+      "valid": 9
+     },
+     "trend_votes": {
+      "pos": 0,
+      "neg": 12,
+      "valid": 13
+     },
+     "macd": {
+      "dif": -47.94,
+      "dea": 10.88,
+      "hist": -117.64,
+      "hist5": [
+       103.05,
+       58.24,
+       7.63,
+       -62.37,
+       -117.64
+      ],
+      "cross_bars_ago": 1,
+      "cross_kind": "死叉"
+     },
+     "sma50": 2251.81,
+     "sma200": 2559.9,
+     "atr_pct": 16.08,
+     "vol20_pct": 8.55,
+     "maxdd120_pct": -63.93,
+     "factors": [
+      {
+       "name": "MACD",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "MACD DIF -47.94 / DEA 10.88 / 柱 -117.64"
+      },
+      {
+       "name": "RSI",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "RSI14 34.8"
+      },
+      {
+       "name": "ROC10",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "ROC10 -30.40%"
+      },
+      {
+       "name": "ROC60",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "ROC60 -58.38%"
+      },
+      {
+       "name": "随机指标",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "随机 %K 15 / %D 19"
+      },
+      {
+       "name": "CCI",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "CCI20 -116"
+      },
+      {
+       "name": "Aroon",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "Aroon 上 68 / 下 4"
+      },
+      {
+       "name": "ADX/DMI",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "ADX 18 / +DI 14 / -DI 32"
+      },
+      {
+       "name": "OBV量能",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "OBV 20期均值方向"
+      },
+      {
+       "name": "SMA20/50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "SMA20 2223.90 / SMA50 2251.81"
+      },
+      {
+       "name": "SMA50/200",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "SMA50 2251.81 / SMA200 2559.90"
+      },
+      {
+       "name": "EMA12/26",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EMA12 2177.68 / EMA26 2225.62"
+      },
+      {
+       "name": "EWMAC16/64",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EWMAC16/64 标准化 -1.45"
+      },
+      {
+       "name": "唐奇安20",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "唐奇安20 中轨 2178.62"
+      },
+      {
+       "name": "Supertrend",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "Supertrend ATR带 864.26~2540.52"
+      },
+      {
+       "name": "PSAR",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "PSAR 空头侧 2701.96"
+      },
+      {
+       "name": "一目均衡",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "一目 云顶 2476.26 / 云底 2164.35"
+      },
+      {
+       "name": "线性回归50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "线性回归50 标准化斜率 -3.32"
+      },
+      {
+       "name": "价vsSMA50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "价 / SMA50 2251.81"
+      },
+      {
+       "name": "价vsSMA200",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "价 / SMA200 2559.90"
+      },
+      {
+       "name": "TSMOM120",
+       "cat": "trend",
+       "vote": 0,
+       "detail": "TSMOM120 -35.9%"
+      },
+      {
+       "name": "布林中轨",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "布林中轨 2223.90"
+      }
+     ],
+     "last_close": 1724.15,
+     "last_candle_t": 1794787200,
+     "bars": 285,
+     "source": "Gate.io 日线重采样（周一对齐）"
+    },
+    "1M": {
+     "momentum_dir": "偏多",
+     "momentum_basis": "修复结构：柱连续 5 根收敛（-364→-100），DIF 上行向零轴回归",
+     "trend_dir": "偏空",
+     "call_dir": "中性",
+     "momentum_votes": {
+      "pos": 0,
+      "neg": 3,
+      "valid": 8
+     },
+     "trend_votes": {
+      "pos": 2,
+      "neg": 7,
+      "valid": 10
+     },
+     "macd": {
+      "dif": -156.03,
+      "dea": -105.94,
+      "hist": -100.16,
+      "hist5": [
+       -364.32,
+       -342.51,
+       -232.77,
+       -122.51,
+       -100.16
+      ],
+      "cross_bars_ago": 9,
+      "cross_kind": "死叉"
+     },
+     "sma50": 2452.83,
+     "sma200": null,
+     "atr_pct": 33.75,
+     "vol20_pct": 20.48,
+     "maxdd120_pct": -51.28,
+     "factors": [
+      {
+       "name": "MACD",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "MACD DIF -156.03 / DEA -105.94 / 柱 -100.16"
+      },
+      {
+       "name": "RSI",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "RSI14 47.3"
+      },
+      {
+       "name": "ROC10",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "ROC10 -24.09%"
+      },
+      {
+       "name": "随机指标",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "随机 %K 23 / %D 28"
+      },
+      {
+       "name": "CCI",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "CCI20 -25"
+      },
+      {
+       "name": "Aroon",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "Aroon 上 44 / 下 28"
+      },
+      {
+       "name": "ADX/DMI",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "ADX 10 / +DI 22 / -DI 22"
+      },
+      {
+       "name": "OBV量能",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "OBV 20期均值方向"
+      },
+      {
+       "name": "SMA20/50",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "SMA20 2615.35 / SMA50 2452.83"
+      },
+      {
+       "name": "EMA12/26",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EMA12 2391.59 / EMA26 2547.61"
+      },
+      {
+       "name": "EWMAC16/64",
+       "cat": "trend",
+       "vote": 0,
+       "detail": "EWMAC16/64 标准化 -0.13"
+      },
+      {
+       "name": "唐奇安20",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "唐奇安20 中轨 3170.91"
+      },
+      {
+       "name": "Supertrend",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "Supertrend ATR带 296.59~4656.60"
+      },
+      {
+       "name": "PSAR",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "PSAR 空头侧 4225.04"
+      },
+      {
+       "name": "一目均衡",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "一目 云顶 2981.89 / 云底 2663.53"
+      },
+      {
+       "name": "线性回归50",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "线性回归50 标准化斜率 +2.25"
+      },
+      {
+       "name": "价vsSMA50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "价 / SMA50 2452.83"
+      },
+      {
+       "name": "布林中轨",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "布林中轨 2615.35"
+      }
+     ],
+     "last_close": 2255.78,
+     "last_candle_t": 1790812800,
+     "bars": 65,
+     "source": "Gate.io 日线重采样（自然月）"
+    }
+   },
+   "price": 1690.09,
+   "price_source": "Gate.io"
+  },
+  {
+   "symbol": "SOL",
+   "timeframes": {
+    "4h": {
+     "momentum_dir": "偏多",
+     "momentum_basis": "MACD 金叉状态，柱 +0.83",
+     "trend_dir": "中性",
+     "call_dir": "偏多",
+     "momentum_votes": {
+      "pos": 6,
+      "neg": 1,
+      "valid": 9
+     },
+     "trend_votes": {
+      "pos": 7,
+      "neg": 6,
+      "valid": 13
+     },
+     "macd": {
+      "dif": 0.33,
+      "dea": -0.09,
+      "hist": 0.83,
+      "hist5": [
+       0.46,
+       0.51,
+       0.49,
+       0.68,
+       0.83
+      ],
+      "cross_bars_ago": 7,
+      "cross_kind": "金叉"
+     },
+     "sma50": 70.91,
+     "sma200": 84.2,
+     "atr_pct": 2.24,
+     "vol20_pct": 1.35,
+     "maxdd120_pct": -18.55,
+     "factors": [
+      {
+       "name": "MACD",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "MACD DIF 0.33 / DEA -0.09 / 柱 +0.83"
+      },
+      {
+       "name": "RSI",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "RSI14 62.8"
+      },
+      {
+       "name": "ROC10",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "ROC10 +8.23%"
+      },
+      {
+       "name": "ROC60",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "ROC60 +0.47%"
+      },
+      {
+       "name": "随机指标",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "随机 %K 97 / %D 92"
+      },
+      {
+       "name": "CCI",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "CCI20 153"
+      },
+      {
+       "name": "Aroon",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "Aroon 上 12 / 下 60"
+      },
+      {
+       "name": "ADX/DMI",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "ADX 9 / +DI 26 / -DI 18"
+      },
+      {
+       "name": "OBV量能",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "OBV 20期均值方向"
+      },
+      {
+       "name": "SMA20/50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "SMA20 70.35 / SMA50 70.91"
+      },
+      {
+       "name": "SMA50/200",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "SMA50 70.91 / SMA200 84.20"
+      },
+      {
+       "name": "EMA12/26",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "EMA12 71.25 / EMA26 70.92"
+      },
+      {
+       "name": "EWMAC16/64",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EWMAC16/64 标准化 -1.09"
+      },
+      {
+       "name": "唐奇安20",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "唐奇安20 中轨 69.62"
+      },
+      {
+       "name": "Supertrend",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "Supertrend ATR带 68.31~77.72"
+      },
+      {
+       "name": "PSAR",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "PSAR 多头侧 66.79"
+      },
+      {
+       "name": "一目均衡",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "一目 云顶 71.90 / 云底 71.68"
+      },
+      {
+       "name": "线性回归50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "线性回归50 标准化斜率 -1.48"
+      },
+      {
+       "name": "价vsSMA50",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "价 / SMA50 70.91"
+      },
+      {
+       "name": "价vsSMA200",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "价 / SMA200 84.20"
+      },
+      {
+       "name": "TSMOM120",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "TSMOM120 -18.8%"
+      },
+      {
+       "name": "布林中轨",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "布林中轨 70.35"
+      }
+     ],
+     "last_close": 73.29,
+     "last_candle_t": 1795752000,
+     "bars": 399,
+     "source": "Gate.io"
+    },
+    "1d": {
+     "momentum_dir": "偏多",
+     "momentum_basis": "MACD 金叉状态，柱 +1.07",
+     "trend_dir": "偏空",
+     "call_dir": "中性",
+     "momentum_votes": {
+      "pos": 1,
+      "neg": 5,
+      "valid": 9
+     },
+     "trend_votes": {
+      "pos": 3,
+      "neg": 9,
+      "valid": 13
+     },
+     "macd": {
+      "dif": -6.39,
+      "dea": -6.93,
+      "hist": 1.07,
+      "hist5": [
+       -0.43,
+       0.17,
+       0.36,
+       0.7,
+       1.07
+      ],
+      "cross_bars_ago": 3,
+      "cross_kind": "金叉"
+     },
+     "sma50": 91.39,
+     "sma200": 87.96,
+     "atr_pct": 6.63,
+     "vol20_pct": 3.37,
+     "maxdd120_pct": -41.84,
+     "factors": [
+      {
+       "name": "MACD",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "MACD DIF -6.39 / DEA -6.93 / 柱 +1.07"
+      },
+      {
+       "name": "RSI",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "RSI14 32.3"
+      },
+      {
+       "name": "ROC10",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "ROC10 -0.77%"
+      },
+      {
+       "name": "ROC60",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "ROC60 -41.78%"
+      },
+      {
+       "name": "随机指标",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "随机 %K 35 / %D 29"
+      },
+      {
+       "name": "CCI",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "CCI20 -58"
+      },
+      {
+       "name": "Aroon",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "Aroon 上 12 / 下 80"
+      },
+      {
+       "name": "ADX/DMI",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "ADX 55 / +DI 15 / -DI 31"
+      },
+      {
+       "name": "OBV量能",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "OBV 20期均值方向"
+      },
+      {
+       "name": "SMA20/50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "SMA20 75.97 / SMA50 91.39"
+      },
+      {
+       "name": "SMA50/200",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "SMA50 91.39 / SMA200 87.96"
+      },
+      {
+       "name": "EMA12/26",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EMA12 72.90 / EMA26 79.29"
+      },
+      {
+       "name": "EWMAC16/64",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EWMAC16/64 标准化 -6.05"
+      },
+      {
+       "name": "唐奇安20",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "唐奇安20 中轨 78.23"
+      },
+      {
+       "name": "Supertrend",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "Supertrend ATR带 56.72~84.99"
+      },
+      {
+       "name": "PSAR",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "PSAR 多头侧 65.67"
+      },
+      {
+       "name": "一目均衡",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "一目 云顶 93.44 / 云底 76.59"
+      },
+      {
+       "name": "线性回归50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "线性回归50 标准化斜率 -19.69"
+      },
+      {
+       "name": "价vsSMA50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "价 / SMA50 91.39"
+      },
+      {
+       "name": "价vsSMA200",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "价 / SMA200 87.96"
+      },
+      {
+       "name": "TSMOM120",
+       "cat": "trend",
+       "vote": 0,
+       "detail": "TSMOM120 -3.6%"
+      },
+      {
+       "name": "布林中轨",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "布林中轨 75.97"
+      }
+     ],
+     "last_close": 71.03,
+     "last_candle_t": 1795651200,
+     "bars": 1999,
+     "source": "Gate.io"
+    },
+    "1w": {
+     "momentum_dir": "偏空",
+     "momentum_basis": "MACD 死叉且柱连续放大向下，柱 -5.44",
+     "trend_dir": "偏空",
+     "call_dir": "偏空",
+     "momentum_votes": {
+      "pos": 1,
+      "neg": 8,
+      "valid": 9
+     },
+     "trend_votes": {
+      "pos": 0,
+      "neg": 12,
+      "valid": 13
+     },
+     "macd": {
+      "dif": -2.31,
+      "dea": 0.41,
+      "hist": -5.44,
+      "hist5": [
+       6.46,
+       3.67,
+       0.69,
+       -3.0,
+       -5.44
+      ],
+      "cross_bars_ago": 1,
+      "cross_kind": "死叉"
+     },
+     "sma50": 93.54,
+     "sma200": 114.15,
+     "atr_pct": 18.48,
+     "vol20_pct": 9.2,
+     "maxdd120_pct": -72.01,
+     "factors": [
+      {
+       "name": "MACD",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "MACD DIF -2.31 / DEA 0.41 / 柱 -5.44"
+      },
+      {
+       "name": "RSI",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "RSI14 36.8"
+      },
+      {
+       "name": "ROC10",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "ROC10 -28.78%"
+      },
+      {
+       "name": "ROC60",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "ROC60 -66.46%"
+      },
+      {
+       "name": "随机指标",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "随机 %K 10 / %D 16"
+      },
+      {
+       "name": "CCI",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "CCI20 -103"
+      },
+      {
+       "name": "Aroon",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "Aroon 上 68 / 下 4"
+      },
+      {
+       "name": "ADX/DMI",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "ADX 20 / +DI 16 / -DI 30"
+      },
+      {
+       "name": "OBV量能",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "OBV 20期均值方向"
+      },
+      {
+       "name": "SMA20/50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "SMA20 92.69 / SMA50 93.54"
+      },
+      {
+       "name": "SMA50/200",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "SMA50 93.54 / SMA200 114.15"
+      },
+      {
+       "name": "EMA12/26",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EMA12 91.19 / EMA26 93.49"
+      },
+      {
+       "name": "EWMAC16/64",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EWMAC16/64 标准化 -2.30"
+      },
+      {
+       "name": "唐奇安20",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "唐奇安20 中轨 96.19"
+      },
+      {
+       "name": "Supertrend",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "Supertrend ATR带 31.62~109.03"
+      },
+      {
+       "name": "PSAR",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "PSAR 空头侧 121.88"
+      },
+      {
+       "name": "一目均衡",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "一目 云顶 104.42 / 云底 93.72"
+      },
+      {
+       "name": "线性回归50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "线性回归50 标准化斜率 -3.22"
+      },
+      {
+       "name": "价vsSMA50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "价 / SMA50 93.54"
+      },
+      {
+       "name": "价vsSMA200",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "价 / SMA200 114.15"
+      },
+      {
+       "name": "TSMOM120",
+       "cat": "trend",
+       "vote": 0,
+       "detail": "TSMOM120 -48.9%"
+      },
+      {
+       "name": "布林中轨",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "布林中轨 92.69"
+      }
+     ],
+     "last_close": 70.72,
+     "last_candle_t": 1794787200,
+     "bars": 285,
+     "source": "Gate.io 日线重采样（周一对齐）"
+    },
+    "1M": {
+     "momentum_dir": "偏多",
+     "momentum_basis": "修复结构：柱连续 5 根收敛（-26→-9），DIF 上行向零轴回归",
+     "trend_dir": "偏空",
+     "call_dir": "中性",
+     "momentum_votes": {
+      "pos": 0,
+      "neg": 4,
+      "valid": 8
+     },
+     "trend_votes": {
+      "pos": 3,
+      "neg": 7,
+      "valid": 10
+     },
+     "macd": {
+      "dif": -12.14,
+      "dea": -7.61,
+      "hist": -9.06,
+      "hist5": [
+       -26.28,
+       -24.47,
+       -18.15,
+       -11.22,
+       -9.06
+      ],
+      "cross_bars_ago": 11,
+      "cross_kind": "死叉"
+     },
+     "sma50": 105.9,
+     "sma200": null,
+     "atr_pct": 45.29,
+     "vol20_pct": 15.9,
+     "maxdd120_pct": -59.82,
+     "factors": [
+      {
+       "name": "MACD",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "MACD DIF -12.14 / DEA -7.61 / 柱 -9.06"
+      },
+      {
+       "name": "RSI",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "RSI14 46.0"
+      },
+      {
+       "name": "ROC10",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "ROC10 -23.39%"
+      },
+      {
+       "name": "随机指标",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "随机 %K 18 / %D 24"
+      },
+      {
+       "name": "CCI",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "CCI20 -45"
+      },
+      {
+       "name": "Aroon",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "Aroon 上 16 / 下 84"
+      },
+      {
+       "name": "ADX/DMI",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "ADX 14 / +DI 23 / -DI 18"
+      },
+      {
+       "name": "OBV量能",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "OBV 20期均值方向"
+      },
+      {
+       "name": "SMA20/50",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "SMA20 125.61 / SMA50 105.90"
+      },
+      {
+       "name": "EMA12/26",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EMA12 105.55 / EMA26 117.70"
+      },
+      {
+       "name": "EWMAC16/64",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "EWMAC16/64 标准化 +0.39"
+      },
+      {
+       "name": "唐奇安20",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "唐奇安20 中轨 156.79"
+      },
+      {
+       "name": "Supertrend",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "Supertrend ATR带 -10.81~226.93"
+      },
+      {
+       "name": "PSAR",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "PSAR 空头侧 187.08"
+      },
+      {
+       "name": "一目均衡",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "一目 云顶 151.92 / 云底 135.27"
+      },
+      {
+       "name": "线性回归50",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "线性回归50 标准化斜率 +7.48"
+      },
+      {
+       "name": "价vsSMA50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "价 / SMA50 105.90"
+      },
+      {
+       "name": "布林中轨",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "布林中轨 125.61"
+      }
+     ],
+     "last_close": 95.49,
+     "last_candle_t": 1790812800,
+     "bars": 65,
+     "source": "Gate.io 日线重采样（自然月）"
+    }
+   },
+   "price": 71.03,
+   "price_source": "Gate.io"
+  },
+  {
+   "symbol": "BNB",
+   "timeframes": {
+    "4h": {
+     "momentum_dir": "偏多",
+     "momentum_basis": "MACD 金叉状态，柱 +4.54",
+     "trend_dir": "中性",
+     "call_dir": "偏多",
+     "momentum_votes": {
+      "pos": 5,
+      "neg": 3,
+      "valid": 9
+     },
+     "trend_votes": {
+      "pos": 7,
+      "neg": 6,
+      "valid": 13
+     },
+     "macd": {
+      "dif": 0.99,
+      "dea": -1.28,
+      "hist": 4.54,
+      "hist5": [
+       2.74,
+       2.93,
+       2.89,
+       3.8,
+       4.54
+      ],
+      "cross_bars_ago": 8,
+      "cross_kind": "金叉"
+     },
+     "sma50": 555.1,
+     "sma200": 650.38,
+     "atr_pct": 1.66,
+     "vol20_pct": 0.89,
+     "maxdd120_pct": -19.29,
+     "factors": [
+      {
+       "name": "MACD",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "MACD DIF 0.99 / DEA -1.28 / 柱 +4.54"
+      },
+      {
+       "name": "RSI",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "RSI14 60.2"
+      },
+      {
+       "name": "ROC10",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "ROC10 +5.25%"
+      },
+      {
+       "name": "ROC60",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "ROC60 -4.75%"
+      },
+      {
+       "name": "随机指标",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "随机 %K 93 / %D 88"
+      },
+      {
+       "name": "CCI",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "CCI20 175"
+      },
+      {
+       "name": "Aroon",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "Aroon 上 12 / 下 60"
+      },
+      {
+       "name": "ADX/DMI",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "ADX 14 / +DI 26 / -DI 22"
+      },
+      {
+       "name": "OBV量能",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "OBV 20期均值方向"
+      },
+      {
+       "name": "SMA20/50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "SMA20 550.78 / SMA50 555.10"
+      },
+      {
+       "name": "SMA50/200",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "SMA50 555.10 / SMA200 650.38"
+      },
+      {
+       "name": "EMA12/26",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "EMA12 555.17 / EMA26 554.18"
+      },
+      {
+       "name": "EWMAC16/64",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EWMAC16/64 标准化 -2.62"
+      },
+      {
+       "name": "唐奇安20",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "唐奇安20 中轨 545.70"
+      },
+      {
+       "name": "Supertrend",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "Supertrend ATR带 538.30~591.80"
+      },
+      {
+       "name": "PSAR",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "PSAR 多头侧 531.92"
+      },
+      {
+       "name": "一目均衡",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "一目 云顶 556.70 / 云底 548.80"
+      },
+      {
+       "name": "线性回归50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "线性回归50 标准化斜率 -3.63"
+      },
+      {
+       "name": "价vsSMA50",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "价 / SMA50 555.10"
+      },
+      {
+       "name": "价vsSMA200",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "价 / SMA200 650.38"
+      },
+      {
+       "name": "TSMOM120",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "TSMOM120 -18.7%"
+      },
+      {
+       "name": "布林中轨",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "布林中轨 550.78"
+      }
+     ],
+     "last_close": 565.2,
+     "last_candle_t": 1795752000,
+     "bars": 399,
+     "source": "Gate.io"
+    },
+    "1d": {
+     "momentum_dir": "偏多",
+     "momentum_basis": "修复结构：柱连续 5 根收敛（-15→-3），DIF 上行向零轴回归",
+     "trend_dir": "偏空",
+     "call_dir": "中性",
+     "momentum_votes": {
+      "pos": 0,
+      "neg": 7,
+      "valid": 9
+     },
+     "trend_votes": {
+      "pos": 3,
+      "neg": 9,
+      "valid": 13
+     },
+     "macd": {
+      "dif": -40.67,
+      "dea": -39.37,
+      "hist": -2.61,
+      "hist5": [
+       -14.66,
+       -11.37,
+       -9.05,
+       -5.74,
+       -2.61
+      ],
+      "cross_bars_ago": 28,
+      "cross_kind": "死叉"
+     },
+     "sma50": 678.59,
+     "sma200": 654.69,
+     "atr_pct": 4.92,
+     "vol20_pct": 2.64,
+     "maxdd120_pct": -30.67,
+     "factors": [
+      {
+       "name": "MACD",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "MACD DIF -40.67 / DEA -39.37 / 柱 -2.61"
+      },
+      {
+       "name": "RSI",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "RSI14 28.8"
+      },
+      {
+       "name": "ROC10",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "ROC10 -6.24%"
+      },
+      {
+       "name": "ROC60",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "ROC60 -28.84%"
+      },
+      {
+       "name": "随机指标",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "随机 %K 33 / %D 28"
+      },
+      {
+       "name": "CCI",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "CCI20 -71"
+      },
+      {
+       "name": "Aroon",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "Aroon 上 12 / 下 80"
+      },
+      {
+       "name": "ADX/DMI",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "ADX 66 / +DI 12 / -DI 37"
+      },
+      {
+       "name": "OBV量能",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "OBV 20期均值方向"
+      },
+      {
+       "name": "SMA20/50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "SMA20 605.64 / SMA50 678.59"
+      },
+      {
+       "name": "SMA50/200",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "SMA50 678.59 / SMA200 654.69"
+      },
+      {
+       "name": "EMA12/26",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EMA12 574.10 / EMA26 614.77"
+      },
+      {
+       "name": "EWMAC16/64",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EWMAC16/64 标准化 -5.29"
+      },
+      {
+       "name": "唐奇安20",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "唐奇安20 中轨 602.80"
+      },
+      {
+       "name": "Supertrend",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "Supertrend ATR带 470.30~637.10"
+      },
+      {
+       "name": "PSAR",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "PSAR 多头侧 508.62"
+      },
+      {
+       "name": "一目均衡",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "一目 云顶 645.85 / 云底 582.20"
+      },
+      {
+       "name": "线性回归50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "线性回归50 标准化斜率 -14.94"
+      },
+      {
+       "name": "价vsSMA50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "价 / SMA50 678.59"
+      },
+      {
+       "name": "价vsSMA200",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "价 / SMA200 654.69"
+      },
+      {
+       "name": "TSMOM120",
+       "cat": "trend",
+       "vote": 0,
+       "detail": "TSMOM120 -3.1%"
+      },
+      {
+       "name": "布林中轨",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "布林中轨 605.64"
+      }
+     ],
+     "last_close": 554.3,
+     "last_candle_t": 1795651200,
+     "bars": 999,
+     "source": "Gate.io"
+    },
+    "1w": {
+     "momentum_dir": "偏空",
+     "momentum_basis": "MACD 死叉且柱连续放大向下，柱 -25.80",
+     "trend_dir": "偏空",
+     "call_dir": "偏空",
+     "momentum_votes": {
+      "pos": 1,
+      "neg": 8,
+      "valid": 9
+     },
+     "trend_votes": {
+      "pos": 0,
+      "neg": 10,
+      "valid": 11
+     },
+     "macd": {
+      "dif": -4.58,
+      "dea": 8.32,
+      "hist": -25.8,
+      "hist5": [
+       29.27,
+       19.8,
+       9.09,
+       -9.61,
+       -25.8
+      ],
+      "cross_bars_ago": 1,
+      "cross_kind": "死叉"
+     },
+     "sma50": 682.69,
+     "sma200": null,
+     "atr_pct": 12.25,
+     "vol20_pct": 6.19,
+     "maxdd120_pct": -57.05,
+     "factors": [
+      {
+       "name": "MACD",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "MACD DIF -4.58 / DEA 8.32 / 柱 -25.80"
+      },
+      {
+       "name": "RSI",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "RSI14 36.8"
+      },
+      {
+       "name": "ROC10",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "ROC10 -21.90%"
+      },
+      {
+       "name": "ROC60",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "ROC60 -43.66%"
+      },
+      {
+       "name": "随机指标",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "随机 %K 18 / %D 25"
+      },
+      {
+       "name": "CCI",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "CCI20 -112"
+      },
+      {
+       "name": "Aroon",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "Aroon 上 76 / 下 100"
+      },
+      {
+       "name": "ADX/DMI",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "ADX 32 / +DI 15 / -DI 29"
+      },
+      {
+       "name": "OBV量能",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "OBV 20期均值方向"
+      },
+      {
+       "name": "SMA20/50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "SMA20 674.40 / SMA50 682.69"
+      },
+      {
+       "name": "EMA12/26",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EMA12 674.27 / EMA26 678.86"
+      },
+      {
+       "name": "EWMAC16/64",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EWMAC16/64 标准化 -0.52"
+      },
+      {
+       "name": "唐奇安20",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "唐奇安20 中轨 673.70"
+      },
+      {
+       "name": "Supertrend",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "Supertrend ATR带 343.26~759.94"
+      },
+      {
+       "name": "PSAR",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "PSAR 空头侧 805.12"
+      },
+      {
+       "name": "一目均衡",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "一目 云顶 731.50 / 云底 656.85"
+      },
+      {
+       "name": "线性回归50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "线性回归50 标准化斜率 -3.24"
+      },
+      {
+       "name": "价vsSMA50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "价 / SMA50 682.69"
+      },
+      {
+       "name": "TSMOM120",
+       "cat": "trend",
+       "vote": 0,
+       "detail": "TSMOM120 +12.6%"
+      },
+      {
+       "name": "布林中轨",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "布林中轨 674.40"
+      }
+     ],
+     "last_close": 559.5,
+     "last_candle_t": 1794787200,
+     "bars": 143,
+     "source": "Gate.io 日线重采样（周一对齐）"
+    },
+    "1M": {
+     "momentum_dir": "偏多",
+     "momentum_basis": "动量因子投票",
+     "trend_dir": "偏空",
+     "call_dir": "中性",
+     "momentum_votes": {
+      "pos": 3,
+      "neg": 1,
+      "valid": 7
+     },
+     "trend_votes": {
+      "pos": 1,
+      "neg": 4,
+      "valid": 5
+     },
+     "macd": null,
+     "sma50": null,
+     "sma200": null,
+     "atr_pct": 22.48,
+     "vol20_pct": 12.53,
+     "maxdd120_pct": -35.37,
+     "factors": [
+      {
+       "name": "RSI",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "RSI14 50.6"
+      },
+      {
+       "name": "ROC10",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "ROC10 -18.57%"
+      },
+      {
+       "name": "随机指标",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "随机 %K 20 / %D 22"
+      },
+      {
+       "name": "CCI",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "CCI20 -2"
+      },
+      {
+       "name": "Aroon",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "Aroon 上 52 / 下 20"
+      },
+      {
+       "name": "ADX/DMI",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "ADX 34 / +DI 28 / -DI 14"
+      },
+      {
+       "name": "OBV量能",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "OBV 20期均值方向"
+      },
+      {
+       "name": "EMA12/26",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "EMA12 697.69 / EMA26 681.85"
+      },
+      {
+       "name": "唐奇安20",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "唐奇安20 中轨 937.85"
+      },
+      {
+       "name": "Supertrend",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "Supertrend ATR带 276.79~1211.91"
+      },
+      {
+       "name": "PSAR",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "PSAR 空头侧 1054.57"
+      },
+      {
+       "name": "布林中轨",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "布林中轨 731.84"
+      }
+     ],
+     "last_close": 703.7,
+     "last_candle_t": 1790812800,
+     "bars": 32,
+     "source": "Gate.io 日线重采样（自然月）"
+    }
+   },
+   "price": 554.3,
+   "price_source": "Gate.io"
+  },
+  {
+   "symbol": "XRP",
+   "timeframes": {
+    "4h": {
+     "momentum_dir": "偏多",
+     "momentum_basis": "MACD 金叉状态，柱 +0.01",
+     "trend_dir": "中性",
+     "call_dir": "偏多",
+     "momentum_votes": {
+      "pos": 5,
+      "neg": 2,
+      "valid": 9
+     },
+     "trend_votes": {
+      "pos": 7,
+      "neg": 5,
+      "valid": 13
+     },
+     "macd": {
+      "dif": 0.01,
+      "dea": 0.0,
+      "hist": 0.01,
+      "hist5": [
+       0.01,
+       0.01,
+       0.01,
+       0.01,
+       0.01
+      ],
+      "cross_bars_ago": 8,
+      "cross_kind": "金叉"
+     },
+     "sma50": 0.94,
+     "sma200": 1.1,
+     "atr_pct": 2.22,
+     "vol20_pct": 1.36,
+     "maxdd120_pct": -16.59,
+     "factors": [
+      {
+       "name": "MACD",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "MACD DIF 0.01 / DEA 0.00 / 柱 +0.01"
+      },
+      {
+       "name": "RSI",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "RSI14 62.6"
+      },
+      {
+       "name": "ROC10",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "ROC10 +8.42%"
+      },
+      {
+       "name": "ROC60",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "ROC60 +1.65%"
+      },
+      {
+       "name": "随机指标",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "随机 %K 97 / %D 88"
+      },
+      {
+       "name": "CCI",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "CCI20 147"
+      },
+      {
+       "name": "Aroon",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "Aroon 上 12 / 下 60"
+      },
+      {
+       "name": "ADX/DMI",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "ADX 16 / +DI 27 / -DI 16"
+      },
+      {
+       "name": "OBV量能",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "OBV 20期均值方向"
+      },
+      {
+       "name": "SMA20/50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "SMA20 0.94 / SMA50 0.94"
+      },
+      {
+       "name": "SMA50/200",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "SMA50 0.94 / SMA200 1.10"
+      },
+      {
+       "name": "EMA12/26",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "EMA12 0.95 / EMA26 0.94"
+      },
+      {
+       "name": "EWMAC16/64",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EWMAC16/64 标准化 -0.58"
+      },
+      {
+       "name": "唐奇安20",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "唐奇安20 中轨 0.93"
+      },
+      {
+       "name": "Supertrend",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "Supertrend ATR带 0.91~1.03"
+      },
+      {
+       "name": "PSAR",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "PSAR 多头侧 0.90"
+      },
+      {
+       "name": "一目均衡",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "一目 云顶 0.96 / 云底 0.94"
+      },
+      {
+       "name": "线性回归50",
+       "cat": "trend",
+       "vote": 0,
+       "detail": "线性回归50 标准化斜率 -0.32"
+      },
+      {
+       "name": "价vsSMA50",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "价 / SMA50 0.94"
+      },
+      {
+       "name": "价vsSMA200",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "价 / SMA200 1.10"
+      },
+      {
+       "name": "TSMOM120",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "TSMOM120 -16.8%"
+      },
+      {
+       "name": "布林中轨",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "布林中轨 0.94"
+      }
+     ],
+     "last_close": 0.9785,
+     "last_candle_t": 1795752000,
+     "bars": 399,
+     "source": "Gate.io"
+    },
+    "1d": {
+     "momentum_dir": "偏多",
+     "momentum_basis": "MACD 金叉状态，柱 +0.02",
+     "trend_dir": "偏空",
+     "call_dir": "中性",
+     "momentum_votes": {
+      "pos": 1,
+      "neg": 5,
+      "valid": 9
+     },
+     "trend_votes": {
+      "pos": 2,
+      "neg": 10,
+      "valid": 13
+     },
+     "macd": {
+      "dif": -0.08,
+      "dea": -0.08,
+      "hist": 0.02,
+      "hist5": [
+       -0.01,
+       0.0,
+       0.0,
+       0.01,
+       0.02
+      ],
+      "cross_bars_ago": 3,
+      "cross_kind": "金叉"
+     },
+     "sma50": 1.18,
+     "sma200": 1.23,
+     "atr_pct": 6.31,
+     "vol20_pct": 3.29,
+     "maxdd120_pct": -39.96,
+     "factors": [
+      {
+       "name": "MACD",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "MACD DIF -0.08 / DEA -0.08 / 柱 +0.02"
+      },
+      {
+       "name": "RSI",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "RSI14 33.9"
+      },
+      {
+       "name": "ROC10",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "ROC10 -1.16%"
+      },
+      {
+       "name": "ROC60",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "ROC60 -37.77%"
+      },
+      {
+       "name": "随机指标",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "随机 %K 46 / %D 38"
+      },
+      {
+       "name": "CCI",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "CCI20 -50"
+      },
+      {
+       "name": "Aroon",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "Aroon 上 12 / 下 80"
+      },
+      {
+       "name": "ADX/DMI",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "ADX 50 / +DI 16 / -DI 28"
+      },
+      {
+       "name": "OBV量能",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "OBV 20期均值方向"
+      },
+      {
+       "name": "SMA20/50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "SMA20 0.99 / SMA50 1.18"
+      },
+      {
+       "name": "SMA50/200",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "SMA50 1.18 / SMA200 1.23"
+      },
+      {
+       "name": "EMA12/26",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EMA12 0.96 / EMA26 1.04"
+      },
+      {
+       "name": "EWMAC16/64",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EWMAC16/64 标准化 -5.78"
+      },
+      {
+       "name": "唐奇安20",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "唐奇安20 中轨 1.04"
+      },
+      {
+       "name": "Supertrend",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "Supertrend ATR带 0.77~1.13"
+      },
+      {
+       "name": "PSAR",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "PSAR 多头侧 0.87"
+      },
+      {
+       "name": "一目均衡",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "一目 云顶 1.19 / 云底 1.02"
+      },
+      {
+       "name": "线性回归50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "线性回归50 标准化斜率 -17.70"
+      },
+      {
+       "name": "价vsSMA50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "价 / SMA50 1.18"
+      },
+      {
+       "name": "价vsSMA200",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "价 / SMA200 1.23"
+      },
+      {
+       "name": "TSMOM120",
+       "cat": "trend",
+       "vote": 0,
+       "detail": "TSMOM120 -12.1%"
+      },
+      {
+       "name": "布林中轨",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "布林中轨 0.99"
+      }
+     ],
+     "last_close": 0.9441,
+     "last_candle_t": 1795651200,
+     "bars": 1999,
+     "source": "Gate.io"
+    },
+    "1w": {
+     "momentum_dir": "偏空",
+     "momentum_basis": "MACD 死叉且柱连续放大向下，柱 -0.06",
+     "trend_dir": "偏空",
+     "call_dir": "偏空",
+     "momentum_votes": {
+      "pos": 0,
+      "neg": 8,
+      "valid": 9
+     },
+     "trend_votes": {
+      "pos": 2,
+      "neg": 11,
+      "valid": 13
+     },
+     "macd": {
+      "dif": -0.08,
+      "dea": -0.05,
+      "hist": -0.06,
+      "hist5": [
+       0.07,
+       0.04,
+       0.01,
+       -0.03,
+       -0.06
+      ],
+      "cross_bars_ago": 1,
+      "cross_kind": "死叉"
+     },
+     "sma50": 1.39,
+     "sma200": 1.29,
+     "atr_pct": 20.43,
+     "vol20_pct": 13.35,
+     "maxdd120_pct": -73.12,
+     "factors": [
+      {
+       "name": "MACD",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "MACD DIF -0.08 / DEA -0.05 / 柱 -0.06"
+      },
+      {
+       "name": "RSI",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "RSI14 34.5"
+      },
+      {
+       "name": "ROC10",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "ROC10 -30.74%"
+      },
+      {
+       "name": "ROC60",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "ROC60 -67.62%"
+      },
+      {
+       "name": "随机指标",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "随机 %K 8 / %D 12"
+      },
+      {
+       "name": "CCI",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "CCI20 -127"
+      },
+      {
+       "name": "Aroon",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "Aroon 上 48 / 下 100"
+      },
+      {
+       "name": "ADX/DMI",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "ADX 17 / +DI 17 / -DI 28"
+      },
+      {
+       "name": "OBV量能",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "OBV 20期均值方向"
+      },
+      {
+       "name": "SMA20/50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "SMA20 1.24 / SMA50 1.39"
+      },
+      {
+       "name": "SMA50/200",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "SMA50 1.39 / SMA200 1.29"
+      },
+      {
+       "name": "EMA12/26",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EMA12 1.20 / EMA26 1.28"
+      },
+      {
+       "name": "EWMAC16/64",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EWMAC16/64 标准化 -2.34"
+      },
+      {
+       "name": "唐奇安20",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "唐奇安20 中轨 1.30"
+      },
+      {
+       "name": "Supertrend",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "Supertrend ATR带 0.37~1.49"
+      },
+      {
+       "name": "PSAR",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "PSAR 空头侧 1.66"
+      },
+      {
+       "name": "一目均衡",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "一目 云顶 1.64 / 云底 1.27"
+      },
+      {
+       "name": "线性回归50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "线性回归50 标准化斜率 -5.33"
+      },
+      {
+       "name": "价vsSMA50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "价 / SMA50 1.39"
+      },
+      {
+       "name": "价vsSMA200",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "价 / SMA200 1.29"
+      },
+      {
+       "name": "TSMOM120",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "TSMOM120 +77.7%"
+      },
+      {
+       "name": "布林中轨",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "布林中轨 1.24"
+      }
+     ],
+     "last_close": 0.9288,
+     "last_candle_t": 1794787200,
+     "bars": 285,
+     "source": "Gate.io 日线重采样（周一对齐）"
+    },
+    "1M": {
+     "momentum_dir": "偏多",
+     "momentum_basis": "修复结构：柱连续 5 根收敛（-0→-0），DIF 上行向零轴回归",
+     "trend_dir": "中性",
+     "call_dir": "偏多",
+     "momentum_votes": {
+      "pos": 1,
+      "neg": 4,
+      "valid": 8
+     },
+     "trend_votes": {
+      "pos": 4,
+      "neg": 6,
+      "valid": 10
+     },
+     "macd": {
+      "dif": -0.05,
+      "dea": 0.07,
+      "hist": -0.24,
+      "hist5": [
+       -0.39,
+       -0.39,
+       -0.33,
+       -0.26,
+       -0.24
+      ],
+      "cross_bars_ago": 10,
+      "cross_kind": "死叉"
+     },
+     "sma50": 1.2,
+     "sma200": null,
+     "atr_pct": 43.15,
+     "vol20_pct": 14.04,
+     "maxdd120_pct": -58.8,
+     "factors": [
+      {
+       "name": "MACD",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "MACD DIF -0.05 / DEA 0.07 / 柱 -0.24"
+      },
+      {
+       "name": "RSI",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "RSI14 45.2"
+      },
+      {
+       "name": "ROC10",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "ROC10 -32.12%"
+      },
+      {
+       "name": "随机指标",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "随机 %K 12 / %D 16"
+      },
+      {
+       "name": "CCI",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "CCI20 -73"
+      },
+      {
+       "name": "Aroon",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "Aroon 上 40 / 下 4"
+      },
+      {
+       "name": "ADX/DMI",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "ADX 11 / +DI 21 / -DI 20"
+      },
+      {
+       "name": "OBV量能",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "OBV 20期均值方向"
+      },
+      {
+       "name": "SMA20/50",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "SMA20 1.86 / SMA50 1.20"
+      },
+      {
+       "name": "EMA12/26",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EMA12 1.47 / EMA26 1.52"
+      },
+      {
+       "name": "EWMAC16/64",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "EWMAC16/64 标准化 +0.60"
+      },
+      {
+       "name": "唐奇安20",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "唐奇安20 中轨 2.32"
+      },
+      {
+       "name": "Supertrend",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "Supertrend ATR带 -0.22~2.97"
+      },
+      {
+       "name": "PSAR",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "PSAR 空头侧 2.58"
+      },
+      {
+       "name": "一目均衡",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "一目 云顶 1.98 / 云底 1.71"
+      },
+      {
+       "name": "线性回归50",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "线性回归50 标准化斜率 +10.33"
+      },
+      {
+       "name": "价vsSMA50",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "价 / SMA50 1.20"
+      },
+      {
+       "name": "布林中轨",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "布林中轨 1.86"
+      }
+     ],
+     "last_close": 1.2511,
+     "last_candle_t": 1790812800,
+     "bars": 65,
+     "source": "Gate.io 日线重采样（自然月）"
+    }
+   },
+   "price": 0.9441,
+   "price_source": "Gate.io"
+  },
+  {
+   "symbol": "DOGE",
+   "timeframes": {
+    "4h": {
+     "momentum_dir": "偏多",
+     "momentum_basis": "MACD 金叉状态，柱 +0.00",
+     "trend_dir": "中性",
+     "call_dir": "偏多",
+     "momentum_votes": {
+      "pos": 5,
+      "neg": 2,
+      "valid": 9
+     },
+     "trend_votes": {
+      "pos": 7,
+      "neg": 6,
+      "valid": 13
+     },
+     "macd": {
+      "dif": 0.0,
+      "dea": 0.0,
+      "hist": 0.0,
+      "hist5": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "cross_bars_ago": 8,
+      "cross_kind": "金叉"
+     },
+     "sma50": 0.06,
+     "sma200": 0.07,
+     "atr_pct": 2.15,
+     "vol20_pct": 1.43,
+     "maxdd120_pct": -19.08,
+     "factors": [
+      {
+       "name": "MACD",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "MACD DIF 0.00 / DEA 0.00 / 柱 +0.00"
+      },
+      {
+       "name": "RSI",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "RSI14 61.3"
+      },
+      {
+       "name": "ROC10",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "ROC10 +8.93%"
+      },
+      {
+       "name": "ROC60",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "ROC60 -1.56%"
+      },
+      {
+       "name": "随机指标",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "随机 %K 98 / %D 92"
+      },
+      {
+       "name": "CCI",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "CCI20 146"
+      },
+      {
+       "name": "Aroon",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "Aroon 上 12 / 下 60"
+      },
+      {
+       "name": "ADX/DMI",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "ADX 10 / +DI 23 / -DI 19"
+      },
+      {
+       "name": "OBV量能",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "OBV 20期均值方向"
+      },
+      {
+       "name": "SMA20/50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "SMA20 0.06 / SMA50 0.06"
+      },
+      {
+       "name": "SMA50/200",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "SMA50 0.06 / SMA200 0.07"
+      },
+      {
+       "name": "EMA12/26",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "EMA12 0.06 / EMA26 0.06"
+      },
+      {
+       "name": "EWMAC16/64",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EWMAC16/64 标准化 -1.02"
+      },
+      {
+       "name": "唐奇安20",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "唐奇安20 中轨 0.06"
+      },
+      {
+       "name": "Supertrend",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "Supertrend ATR带 0.05~0.06"
+      },
+      {
+       "name": "PSAR",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "PSAR 多头侧 0.05"
+      },
+      {
+       "name": "一目均衡",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "一目 云顶 0.06 / 云底 0.06"
+      },
+      {
+       "name": "线性回归50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "线性回归50 标准化斜率 -0.86"
+      },
+      {
+       "name": "价vsSMA50",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "价 / SMA50 0.06"
+      },
+      {
+       "name": "价vsSMA200",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "价 / SMA200 0.07"
+      },
+      {
+       "name": "TSMOM120",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "TSMOM120 -19.3%"
+      },
+      {
+       "name": "布林中轨",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "布林中轨 0.06"
+      }
+     ],
+     "last_close": 0.05818,
+     "last_candle_t": 1795752000,
+     "bars": 399,
+     "source": "Gate.io"
+    },
+    "1d": {
+     "momentum_dir": "偏多",
+     "momentum_basis": "MACD 金叉状态，柱 +0.00",
+     "trend_dir": "偏空",
+     "call_dir": "中性",
+     "momentum_votes": {
+      "pos": 1,
+      "neg": 5,
+      "valid": 9
+     },
+     "trend_votes": {
+      "pos": 2,
+      "neg": 11,
+      "valid": 13
+     },
+     "macd": {
+      "dif": -0.01,
+      "dea": -0.01,
+      "hist": 0.0,
+      "hist5": [
+       -0.0,
+       -0.0,
+       -0.0,
+       0.0,
+       0.0
+      ],
+      "cross_bars_ago": 1,
+      "cross_kind": "金叉"
+     },
+     "sma50": 0.07,
+     "sma200": 0.08,
+     "atr_pct": 6.54,
+     "vol20_pct": 3.31,
+     "maxdd120_pct": -43.76,
+     "factors": [
+      {
+       "name": "MACD",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "MACD DIF -0.01 / DEA -0.01 / 柱 +0.00"
+      },
+      {
+       "name": "RSI",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "RSI14 31.7"
+      },
+      {
+       "name": "ROC10",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "ROC10 -4.17%"
+      },
+      {
+       "name": "ROC60",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "ROC60 -41.71%"
+      },
+      {
+       "name": "随机指标",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "随机 %K 36 / %D 30"
+      },
+      {
+       "name": "CCI",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "CCI20 -58"
+      },
+      {
+       "name": "Aroon",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "Aroon 上 12 / 下 80"
+      },
+      {
+       "name": "ADX/DMI",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "ADX 64 / +DI 12 / -DI 31"
+      },
+      {
+       "name": "OBV量能",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "OBV 20期均值方向"
+      },
+      {
+       "name": "SMA20/50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "SMA20 0.06 / SMA50 0.07"
+      },
+      {
+       "name": "SMA50/200",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "SMA50 0.07 / SMA200 0.08"
+      },
+      {
+       "name": "EMA12/26",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EMA12 0.06 / EMA26 0.06"
+      },
+      {
+       "name": "EWMAC16/64",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EWMAC16/64 标准化 -6.35"
+      },
+      {
+       "name": "唐奇安20",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "唐奇安20 中轨 0.06"
+      },
+      {
+       "name": "Supertrend",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "Supertrend ATR带 0.05~0.07"
+      },
+      {
+       "name": "PSAR",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "PSAR 多头侧 0.05"
+      },
+      {
+       "name": "一目均衡",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "一目 云顶 0.07 / 云底 0.06"
+      },
+      {
+       "name": "线性回归50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "线性回归50 标准化斜率 -17.91"
+      },
+      {
+       "name": "价vsSMA50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "价 / SMA50 0.07"
+      },
+      {
+       "name": "价vsSMA200",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "价 / SMA200 0.08"
+      },
+      {
+       "name": "TSMOM120",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "TSMOM120 -19.5%"
+      },
+      {
+       "name": "布林中轨",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "布林中轨 0.06"
+      }
+     ],
+     "last_close": 0.05648,
+     "last_candle_t": 1795651200,
+     "bars": 1999,
+     "source": "Gate.io"
+    },
+    "1w": {
+     "momentum_dir": "偏空",
+     "momentum_basis": "MACD 死叉且柱连续放大向下，柱 -0.00",
+     "trend_dir": "偏空",
+     "call_dir": "偏空",
+     "momentum_votes": {
+      "pos": 0,
+      "neg": 7,
+      "valid": 9
+     },
+     "trend_votes": {
+      "pos": 0,
+      "neg": 12,
+      "valid": 13
+     },
+     "macd": {
+      "dif": -0.01,
+      "dea": -0.01,
+      "hist": -0.0,
+      "hist5": [
+       0.0,
+       0.0,
+       0.0,
+       -0.0,
+       -0.0
+      ],
+      "cross_bars_ago": 1,
+      "cross_kind": "死叉"
+     },
+     "sma50": 0.09,
+     "sma200": 0.14,
+     "atr_pct": 23.09,
+     "vol20_pct": 10.48,
+     "maxdd120_pct": -88.13,
+     "factors": [
+      {
+       "name": "MACD",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "MACD DIF -0.01 / DEA -0.01 / 柱 -0.00"
+      },
+      {
+       "name": "RSI",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "RSI14 33.0"
+      },
+      {
+       "name": "ROC10",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "ROC10 -32.82%"
+      },
+      {
+       "name": "ROC60",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "ROC60 -76.67%"
+      },
+      {
+       "name": "随机指标",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "随机 %K 8 / %D 7"
+      },
+      {
+       "name": "CCI",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "CCI20 -171"
+      },
+      {
+       "name": "Aroon",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "Aroon 上 68 / 下 100"
+      },
+      {
+       "name": "ADX/DMI",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "ADX 11 / +DI 15 / -DI 28"
+      },
+      {
+       "name": "OBV量能",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "OBV 20期均值方向"
+      },
+      {
+       "name": "SMA20/50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "SMA20 0.08 / SMA50 0.09"
+      },
+      {
+       "name": "SMA50/200",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "SMA50 0.09 / SMA200 0.14"
+      },
+      {
+       "name": "EMA12/26",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EMA12 0.07 / EMA26 0.08"
+      },
+      {
+       "name": "EWMAC16/64",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EWMAC16/64 标准化 -6.01"
+      },
+      {
+       "name": "唐奇安20",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "唐奇安20 中轨 0.08"
+      },
+      {
+       "name": "Supertrend",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "Supertrend ATR带 0.02~0.09"
+      },
+      {
+       "name": "PSAR",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "PSAR 空头侧 0.10"
+      },
+      {
+       "name": "一目均衡",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "一目 云顶 0.10 / 云底 0.08"
+      },
+      {
+       "name": "线性回归50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "线性回归50 标准化斜率 -9.44"
+      },
+      {
+       "name": "价vsSMA50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "价 / SMA50 0.09"
+      },
+      {
+       "name": "价vsSMA200",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "价 / SMA200 0.14"
+      },
+      {
+       "name": "TSMOM120",
+       "cat": "trend",
+       "vote": 0,
+       "detail": "TSMOM120 -46.6%"
+      },
+      {
+       "name": "布林中轨",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "布林中轨 0.08"
+      }
+     ],
+     "last_close": 0.05536,
+     "last_candle_t": 1794787200,
+     "bars": 285,
+     "source": "Gate.io 日线重采样（周一对齐）"
+    },
+    "1M": {
+     "momentum_dir": "偏多",
+     "momentum_basis": "修复结构：柱连续 5 根收敛（-0→-0），DIF 上行向零轴回归",
+     "trend_dir": "偏空",
+     "call_dir": "中性",
+     "momentum_votes": {
+      "pos": 0,
+      "neg": 6,
+      "valid": 8
+     },
+     "trend_votes": {
+      "pos": 2,
+      "neg": 8,
+      "valid": 10
+     },
+     "macd": {
+      "dif": -0.02,
+      "dea": -0.02,
+      "hist": -0.02,
+      "hist5": [
+       -0.03,
+       -0.03,
+       -0.02,
+       -0.02,
+       -0.02
+      ],
+      "cross_bars_ago": 16,
+      "cross_kind": "死叉"
+     },
+     "sma50": 0.13,
+     "sma200": null,
+     "atr_pct": 75.39,
+     "vol20_pct": 15.38,
+     "maxdd120_pct": -82.06,
+     "factors": [
+      {
+       "name": "MACD",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "MACD DIF -0.02 / DEA -0.02 / 柱 -0.02"
+      },
+      {
+       "name": "RSI",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "RSI14 41.7"
+      },
+      {
+       "name": "ROC10",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "ROC10 -35.61%"
+      },
+      {
+       "name": "随机指标",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "随机 %K 3 / %D 7"
+      },
+      {
+       "name": "CCI",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "CCI20 -80"
+      },
+      {
+       "name": "Aroon",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "Aroon 上 12 / 下 92"
+      },
+      {
+       "name": "ADX/DMI",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "ADX 14 / +DI 23 / -DI 20"
+      },
+      {
+       "name": "OBV量能",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "OBV 20期均值方向"
+      },
+      {
+       "name": "SMA20/50",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "SMA20 0.13 / SMA50 0.13"
+      },
+      {
+       "name": "EMA12/26",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EMA12 0.10 / EMA26 0.13"
+      },
+      {
+       "name": "EWMAC16/64",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EWMAC16/64 标准化 -0.85"
+      },
+      {
+       "name": "唐奇安20",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "唐奇安20 中轨 0.20"
+      },
+      {
+       "name": "Supertrend",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "Supertrend ATR带 -0.07~0.24"
+      },
+      {
+       "name": "PSAR",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "PSAR 空头侧 0.16"
+      },
+      {
+       "name": "一目均衡",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "一目 云顶 0.27 / 云底 0.18"
+      },
+      {
+       "name": "线性回归50",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "线性回归50 标准化斜率 +4.69"
+      },
+      {
+       "name": "价vsSMA50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "价 / SMA50 0.13"
+      },
+      {
+       "name": "布林中轨",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "布林中轨 0.13"
+      }
+     ],
+     "last_close": 0.07562,
+     "last_candle_t": 1790812800,
+     "bars": 65,
+     "source": "Gate.io 日线重采样（自然月）"
+    }
+   },
+   "price": 0.05648,
+   "price_source": "Gate.io"
+  },
+  {
+   "symbol": "ADA",
+   "timeframes": {
+    "4h": {
+     "momentum_dir": "偏多",
+     "momentum_basis": "MACD 金叉状态，柱 +0.00",
+     "trend_dir": "偏多",
+     "call_dir": "偏多",
+     "momentum_votes": {
+      "pos": 5,
+      "neg": 2,
+      "valid": 9
+     },
+     "trend_votes": {
+      "pos": 8,
+      "neg": 4,
+      "valid": 13
+     },
+     "macd": {
+      "dif": 0.0,
+      "dea": 0.0,
+      "hist": 0.0,
+      "hist5": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "cross_bars_ago": 8,
+      "cross_kind": "金叉"
+     },
+     "sma50": 0.15,
+     "sma200": 0.17,
+     "atr_pct": 2.46,
+     "vol20_pct": 1.66,
+     "maxdd120_pct": -16.52,
+     "factors": [
+      {
+       "name": "MACD",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "MACD DIF 0.00 / DEA 0.00 / 柱 +0.00"
+      },
+      {
+       "name": "RSI",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "RSI14 61.9"
+      },
+      {
+       "name": "ROC10",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "ROC10 +10.22%"
+      },
+      {
+       "name": "ROC60",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "ROC60 -0.34%"
+      },
+      {
+       "name": "随机指标",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "随机 %K 97 / %D 92"
+      },
+      {
+       "name": "CCI",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "CCI20 147"
+      },
+      {
+       "name": "Aroon",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "Aroon 上 12 / 下 60"
+      },
+      {
+       "name": "ADX/DMI",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "ADX 11 / +DI 24 / -DI 16"
+      },
+      {
+       "name": "OBV量能",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "OBV 20期均值方向"
+      },
+      {
+       "name": "SMA20/50",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "SMA20 0.15 / SMA50 0.15"
+      },
+      {
+       "name": "SMA50/200",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "SMA50 0.15 / SMA200 0.17"
+      },
+      {
+       "name": "EMA12/26",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "EMA12 0.15 / EMA26 0.15"
+      },
+      {
+       "name": "EWMAC16/64",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EWMAC16/64 标准化 -0.72"
+      },
+      {
+       "name": "唐奇安20",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "唐奇安20 中轨 0.14"
+      },
+      {
+       "name": "Supertrend",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "Supertrend ATR带 0.14~0.16"
+      },
+      {
+       "name": "PSAR",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "PSAR 多头侧 0.14"
+      },
+      {
+       "name": "一目均衡",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "一目 云顶 0.15 / 云底 0.14"
+      },
+      {
+       "name": "线性回归50",
+       "cat": "trend",
+       "vote": 0,
+       "detail": "线性回归50 标准化斜率 -0.18"
+      },
+      {
+       "name": "价vsSMA50",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "价 / SMA50 0.15"
+      },
+      {
+       "name": "价vsSMA200",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "价 / SMA200 0.17"
+      },
+      {
+       "name": "TSMOM120",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "TSMOM120 -17.1%"
+      },
+      {
+       "name": "布林中轨",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "布林中轨 0.15"
+      }
+     ],
+     "last_close": 0.1532,
+     "last_candle_t": 1795752000,
+     "bars": 399,
+     "source": "Gate.io"
+    },
+    "1d": {
+     "momentum_dir": "偏多",
+     "momentum_basis": "MACD 金叉状态，柱 +0.00",
+     "trend_dir": "偏空",
+     "call_dir": "中性",
+     "momentum_votes": {
+      "pos": 2,
+      "neg": 4,
+      "valid": 9
+     },
+     "trend_votes": {
+      "pos": 2,
+      "neg": 10,
+      "valid": 13
+     },
+     "macd": {
+      "dif": -0.01,
+      "dea": -0.01,
+      "hist": 0.0,
+      "hist5": [
+       -0.0,
+       -0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "cross_bars_ago": 2,
+      "cross_kind": "金叉"
+     },
+     "sma50": 0.19,
+     "sma200": 0.2,
+     "atr_pct": 7.23,
+     "vol20_pct": 3.57,
+     "maxdd120_pct": -45.03,
+     "factors": [
+      {
+       "name": "MACD",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "MACD DIF -0.01 / DEA -0.01 / 柱 +0.00"
+      },
+      {
+       "name": "RSI",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "RSI14 34.2"
+      },
+      {
+       "name": "ROC10",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "ROC10 -2.96%"
+      },
+      {
+       "name": "ROC60",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "ROC60 -41.75%"
+      },
+      {
+       "name": "随机指标",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "随机 %K 36 / %D 30"
+      },
+      {
+       "name": "CCI",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "CCI20 -52"
+      },
+      {
+       "name": "Aroon",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "Aroon 上 12 / 下 80"
+      },
+      {
+       "name": "ADX/DMI",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "ADX 57 / +DI 12 / -DI 28"
+      },
+      {
+       "name": "OBV量能",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "OBV 20期均值方向"
+      },
+      {
+       "name": "SMA20/50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "SMA20 0.16 / SMA50 0.19"
+      },
+      {
+       "name": "SMA50/200",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "SMA50 0.19 / SMA200 0.20"
+      },
+      {
+       "name": "EMA12/26",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EMA12 0.15 / EMA26 0.16"
+      },
+      {
+       "name": "EWMAC16/64",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EWMAC16/64 标准化 -5.77"
+      },
+      {
+       "name": "唐奇安20",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "唐奇安20 中轨 0.16"
+      },
+      {
+       "name": "Supertrend",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "Supertrend ATR带 0.12~0.18"
+      },
+      {
+       "name": "PSAR",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "PSAR 多头侧 0.13"
+      },
+      {
+       "name": "一目均衡",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "一目 云顶 0.21 / 云底 0.16"
+      },
+      {
+       "name": "线性回归50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "线性回归50 标准化斜率 -20.69"
+      },
+      {
+       "name": "价vsSMA50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "价 / SMA50 0.19"
+      },
+      {
+       "name": "价vsSMA200",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "价 / SMA200 0.20"
+      },
+      {
+       "name": "TSMOM120",
+       "cat": "trend",
+       "vote": 0,
+       "detail": "TSMOM120 -8.3%"
+      },
+      {
+       "name": "布林中轨",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "布林中轨 0.16"
+      }
+     ],
+     "last_close": 0.14863,
+     "last_candle_t": 1795651200,
+     "bars": 1999,
+     "source": "Gate.io"
+    },
+    "1w": {
+     "momentum_dir": "偏空",
+     "momentum_basis": "MACD 死叉且柱连续放大向下，柱 -0.00",
+     "trend_dir": "偏空",
+     "call_dir": "偏空",
+     "momentum_votes": {
+      "pos": 1,
+      "neg": 6,
+      "valid": 9
+     },
+     "trend_votes": {
+      "pos": 0,
+      "neg": 12,
+      "valid": 13
+     },
+     "macd": {
+      "dif": -0.02,
+      "dea": -0.02,
+      "hist": -0.0,
+      "hist5": [
+       0.02,
+       0.02,
+       0.01,
+       0.0,
+       -0.0
+      ],
+      "cross_bars_ago": 0,
+      "cross_kind": "死叉"
+     },
+     "sma50": 0.24,
+     "sma200": 0.46,
+     "atr_pct": 27.36,
+     "vol20_pct": 11.75,
+     "maxdd120_pct": -87.87,
+     "factors": [
+      {
+       "name": "MACD",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "MACD DIF -0.02 / DEA -0.02 / 柱 -0.00"
+      },
+      {
+       "name": "RSI",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "RSI14 36.4"
+      },
+      {
+       "name": "ROC10",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "ROC10 -28.83%"
+      },
+      {
+       "name": "ROC60",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "ROC60 -82.09%"
+      },
+      {
+       "name": "随机指标",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "随机 %K 8 / %D 7"
+      },
+      {
+       "name": "CCI",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "CCI20 -142"
+      },
+      {
+       "name": "Aroon",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "Aroon 上 76 / 下 100"
+      },
+      {
+       "name": "ADX/DMI",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "ADX 12 / +DI 16 / -DI 24"
+      },
+      {
+       "name": "OBV量能",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "OBV 20期均值方向"
+      },
+      {
+       "name": "SMA20/50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "SMA20 0.20 / SMA50 0.24"
+      },
+      {
+       "name": "SMA50/200",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "SMA50 0.24 / SMA200 0.46"
+      },
+      {
+       "name": "EMA12/26",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EMA12 0.19 / EMA26 0.21"
+      },
+      {
+       "name": "EWMAC16/64",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EWMAC16/64 标准化 -5.72"
+      },
+      {
+       "name": "唐奇安20",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "唐奇安20 中轨 0.21"
+      },
+      {
+       "name": "Supertrend",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "Supertrend ATR带 0.03~0.26"
+      },
+      {
+       "name": "PSAR",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "PSAR 空头侧 0.27"
+      },
+      {
+       "name": "一目均衡",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "一目 云顶 0.31 / 云底 0.21"
+      },
+      {
+       "name": "线性回归50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "线性回归50 标准化斜率 -10.49"
+      },
+      {
+       "name": "价vsSMA50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "价 / SMA50 0.24"
+      },
+      {
+       "name": "价vsSMA200",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "价 / SMA200 0.46"
+      },
+      {
+       "name": "TSMOM120",
+       "cat": "trend",
+       "vote": 0,
+       "detail": "TSMOM120 -57.9%"
+      },
+      {
+       "name": "布林中轨",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "布林中轨 0.20"
+      }
+     ],
+     "last_close": 0.14483,
+     "last_candle_t": 1794787200,
+     "bars": 285,
+     "source": "Gate.io 日线重采样（周一对齐）"
+    },
+    "1M": {
+     "momentum_dir": "偏多",
+     "momentum_basis": "修复结构：柱连续 5 根收敛（-0→-0），DIF 上行向零轴回归",
+     "trend_dir": "偏空",
+     "call_dir": "中性",
+     "momentum_votes": {
+      "pos": 0,
+      "neg": 6,
+      "valid": 8
+     },
+     "trend_votes": {
+      "pos": 0,
+      "neg": 9,
+      "valid": 10
+     },
+     "macd": {
+      "dif": -0.12,
+      "dea": -0.1,
+      "hist": -0.04,
+      "hist5": [
+       -0.09,
+       -0.08,
+       -0.07,
+       -0.05,
+       -0.04
+      ],
+      "cross_bars_ago": 10,
+      "cross_kind": "死叉"
+     },
+     "sma50": 0.45,
+     "sma200": null,
+     "atr_pct": 97.0,
+     "vol20_pct": 18.0,
+     "maxdd120_pct": -92.95,
+     "factors": [
+      {
+       "name": "MACD",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "MACD DIF -0.12 / DEA -0.10 / 柱 -0.04"
+      },
+      {
+       "name": "RSI",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "RSI14 39.5"
+      },
+      {
+       "name": "ROC10",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "ROC10 -42.18%"
+      },
+      {
+       "name": "随机指标",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "随机 %K 7 / %D 9"
+      },
+      {
+       "name": "CCI",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "CCI20 -70"
+      },
+      {
+       "name": "Aroon",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "Aroon 上 12 / 下 84"
+      },
+      {
+       "name": "ADX/DMI",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "ADX 7 / +DI 21 / -DI 22"
+      },
+      {
+       "name": "OBV量能",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "OBV 20期均值方向"
+      },
+      {
+       "name": "SMA20/50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "SMA20 0.43 / SMA50 0.45"
+      },
+      {
+       "name": "EMA12/26",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EMA12 0.28 / EMA26 0.41"
+      },
+      {
+       "name": "EWMAC16/64",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EWMAC16/64 标准化 -3.24"
+      },
+      {
+       "name": "唐奇安20",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "唐奇安20 中轨 0.66"
+      },
+      {
+       "name": "Supertrend",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "Supertrend ATR带 -0.25~0.71"
+      },
+      {
+       "name": "PSAR",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "PSAR 空头侧 0.76"
+      },
+      {
+       "name": "一目均衡",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "一目 云顶 0.73 / 云底 0.48"
+      },
+      {
+       "name": "线性回归50",
+       "cat": "trend",
+       "vote": 0,
+       "detail": "线性回归50 标准化斜率 -0.30"
+      },
+      {
+       "name": "价vsSMA50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "价 / SMA50 0.45"
+      },
+      {
+       "name": "布林中轨",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "布林中轨 0.43"
+      }
+     ],
+     "last_close": 0.19288,
+     "last_candle_t": 1790812800,
+     "bars": 65,
+     "source": "Gate.io 日线重采样（自然月）"
+    }
+   },
+   "price": 0.14863,
+   "price_source": "Gate.io"
+  },
+  {
+   "symbol": "LINK",
+   "timeframes": {
+    "4h": {
+     "momentum_dir": "偏多",
+     "momentum_basis": "MACD 金叉状态，柱 +0.13",
+     "trend_dir": "偏多",
+     "call_dir": "偏多",
+     "momentum_votes": {
+      "pos": 7,
+      "neg": 0,
+      "valid": 9
+     },
+     "trend_votes": {
+      "pos": 10,
+      "neg": 3,
+      "valid": 13
+     },
+     "macd": {
+      "dif": 0.15,
+      "dea": 0.09,
+      "hist": 0.13,
+      "hist5": [
+       0.09,
+       0.09,
+       0.09,
+       0.11,
+       0.13
+      ],
+      "cross_bars_ago": 8,
+      "cross_kind": "金叉"
+     },
+     "sma50": 8.89,
+     "sma200": 10.21,
+     "atr_pct": 2.28,
+     "vol20_pct": 1.54,
+     "maxdd120_pct": -11.54,
+     "factors": [
+      {
+       "name": "MACD",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "MACD DIF 0.15 / DEA 0.09 / 柱 +0.13"
+      },
+      {
+       "name": "RSI",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "RSI14 70.4"
+      },
+      {
+       "name": "ROC10",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "ROC10 +11.05%"
+      },
+      {
+       "name": "ROC60",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "ROC60 +4.59%"
+      },
+      {
+       "name": "随机指标",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "随机 %K 91 / %D 90"
+      },
+      {
+       "name": "CCI",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "CCI20 178"
+      },
+      {
+       "name": "Aroon",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "Aroon 上 100 / 下 60"
+      },
+      {
+       "name": "ADX/DMI",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "ADX 18 / +DI 30 / -DI 13"
+      },
+      {
+       "name": "OBV量能",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "OBV 20期均值方向"
+      },
+      {
+       "name": "SMA20/50",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "SMA20 9.04 / SMA50 8.89"
+      },
+      {
+       "name": "SMA50/200",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "SMA50 8.89 / SMA200 10.21"
+      },
+      {
+       "name": "EMA12/26",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "EMA12 9.23 / EMA26 9.08"
+      },
+      {
+       "name": "EWMAC16/64",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "EWMAC16/64 标准化 +0.28"
+      },
+      {
+       "name": "唐奇安20",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "唐奇安20 中轨 9.02"
+      },
+      {
+       "name": "Supertrend",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "Supertrend ATR带 8.94~10.25"
+      },
+      {
+       "name": "PSAR",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "PSAR 多头侧 8.97"
+      },
+      {
+       "name": "一目均衡",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "一目 云顶 9.22 / 云底 8.84"
+      },
+      {
+       "name": "线性回归50",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "线性回归50 标准化斜率 +3.13"
+      },
+      {
+       "name": "价vsSMA50",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "价 / SMA50 8.89"
+      },
+      {
+       "name": "价vsSMA200",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "价 / SMA200 10.21"
+      },
+      {
+       "name": "TSMOM120",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "TSMOM120 -11.8%"
+      },
+      {
+       "name": "布林中轨",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "布林中轨 9.04"
+      }
+     ],
+     "last_close": 9.601,
+     "last_candle_t": 1795752000,
+     "bars": 399,
+     "source": "Gate.io"
+    },
+    "1d": {
+     "momentum_dir": "偏多",
+     "momentum_basis": "MACD 金叉状态，柱 +0.16",
+     "trend_dir": "偏空",
+     "call_dir": "中性",
+     "momentum_votes": {
+      "pos": 2,
+      "neg": 5,
+      "valid": 9
+     },
+     "trend_votes": {
+      "pos": 3,
+      "neg": 9,
+      "valid": 13
+     },
+     "macd": {
+      "dif": -0.6,
+      "dea": -0.68,
+      "hist": 0.16,
+      "hist5": [
+       -0.11,
+       -0.03,
+       0.02,
+       0.08,
+       0.16
+      ],
+      "cross_bars_ago": 2,
+      "cross_kind": "金叉"
+     },
+     "sma50": 10.94,
+     "sma200": 10.07,
+     "atr_pct": 6.64,
+     "vol20_pct": 3.31,
+     "maxdd120_pct": -39.91,
+     "factors": [
+      {
+       "name": "MACD",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "MACD DIF -0.60 / DEA -0.68 / 柱 +0.16"
+      },
+      {
+       "name": "RSI",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "RSI14 42.3"
+      },
+      {
+       "name": "ROC10",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "ROC10 +1.50%"
+      },
+      {
+       "name": "ROC60",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "ROC60 -33.80%"
+      },
+      {
+       "name": "随机指标",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "随机 %K 58 / %D 46"
+      },
+      {
+       "name": "CCI",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "CCI20 -23"
+      },
+      {
+       "name": "Aroon",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "Aroon 上 12 / 下 80"
+      },
+      {
+       "name": "ADX/DMI",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "ADX 51 / +DI 15 / -DI 25"
+      },
+      {
+       "name": "OBV量能",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "OBV 20期均值方向"
+      },
+      {
+       "name": "SMA20/50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "SMA20 9.47 / SMA50 10.94"
+      },
+      {
+       "name": "SMA50/200",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "SMA50 10.94 / SMA200 10.07"
+      },
+      {
+       "name": "EMA12/26",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EMA12 9.17 / EMA26 9.77"
+      },
+      {
+       "name": "EWMAC16/64",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EWMAC16/64 标准化 -4.30"
+      },
+      {
+       "name": "唐奇安20",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "唐奇安20 中轨 9.50"
+      },
+      {
+       "name": "Supertrend",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "Supertrend ATR带 7.43~11.03"
+      },
+      {
+       "name": "PSAR",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "PSAR 多头侧 8.06"
+      },
+      {
+       "name": "一目均衡",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "一目 云顶 11.05 / 云底 9.34"
+      },
+      {
+       "name": "线性回归50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "线性回归50 标准化斜率 -15.15"
+      },
+      {
+       "name": "价vsSMA50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "价 / SMA50 10.94"
+      },
+      {
+       "name": "价vsSMA200",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "价 / SMA200 10.07"
+      },
+      {
+       "name": "TSMOM120",
+       "cat": "trend",
+       "vote": 0,
+       "detail": "TSMOM120 +11.4%"
+      },
+      {
+       "name": "布林中轨",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "布林中轨 9.47"
+      }
+     ],
+     "last_close": 9.281,
+     "last_candle_t": 1795651200,
+     "bars": 1999,
+     "source": "Gate.io"
+    },
+    "1w": {
+     "momentum_dir": "偏空",
+     "momentum_basis": "MACD 死叉且柱连续放大向下，柱 -0.58",
+     "trend_dir": "偏空",
+     "call_dir": "偏空",
+     "momentum_votes": {
+      "pos": 1,
+      "neg": 7,
+      "valid": 9
+     },
+     "trend_votes": {
+      "pos": 2,
+      "neg": 9,
+      "valid": 13
+     },
+     "macd": {
+      "dif": 0.07,
+      "dea": 0.36,
+      "hist": -0.58,
+      "hist5": [
+       0.64,
+       0.37,
+       0.05,
+       -0.3,
+       -0.58
+      ],
+      "cross_bars_ago": 1,
+      "cross_kind": "死叉"
+     },
+     "sma50": 10.17,
+     "sma200": 12.92,
+     "atr_pct": 19.79,
+     "vol20_pct": 10.18,
+     "maxdd120_pct": -69.83,
+     "factors": [
+      {
+       "name": "MACD",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "MACD DIF 0.07 / DEA 0.36 / 柱 -0.58"
+      },
+      {
+       "name": "RSI",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "RSI14 41.3"
+      },
+      {
+       "name": "ROC10",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "ROC10 -21.22%"
+      },
+      {
+       "name": "ROC60",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "ROC60 -59.29%"
+      },
+      {
+       "name": "随机指标",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "随机 %K 11 / %D 19"
+      },
+      {
+       "name": "CCI",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "CCI20 -78"
+      },
+      {
+       "name": "Aroon",
+       "cat": "momentum",
+       "vote": 1,
+       "detail": "Aroon 上 72 / 下 4"
+      },
+      {
+       "name": "ADX/DMI",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "ADX 27 / +DI 20 / -DI 24"
+      },
+      {
+       "name": "OBV量能",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "OBV 20期均值方向"
+      },
+      {
+       "name": "SMA20/50",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "SMA20 10.79 / SMA50 10.17"
+      },
+      {
+       "name": "SMA50/200",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "SMA50 10.17 / SMA200 12.92"
+      },
+      {
+       "name": "EMA12/26",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "EMA12 10.83 / EMA26 10.75"
+      },
+      {
+       "name": "EWMAC16/64",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EWMAC16/64 标准化 -0.97"
+      },
+      {
+       "name": "唐奇安20",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "唐奇安20 中轨 11.42"
+      },
+      {
+       "name": "Supertrend",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "Supertrend ATR带 3.35~14.03"
+      },
+      {
+       "name": "PSAR",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "PSAR 空头侧 15.03"
+      },
+      {
+       "name": "一目均衡",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "一目 云顶 11.63 / 云底 11.39"
+      },
+      {
+       "name": "线性回归50",
+       "cat": "trend",
+       "vote": 0,
+       "detail": "线性回归50 标准化斜率 +0.26"
+      },
+      {
+       "name": "价vsSMA50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "价 / SMA50 10.17"
+      },
+      {
+       "name": "价vsSMA200",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "价 / SMA200 12.92"
+      },
+      {
+       "name": "TSMOM120",
+       "cat": "trend",
+       "vote": 0,
+       "detail": "TSMOM120 -18.9%"
+      },
+      {
+       "name": "布林中轨",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "布林中轨 10.79"
+      }
+     ],
+     "last_close": 8.826,
+     "last_candle_t": 1794787200,
+     "bars": 285,
+     "source": "Gate.io 日线重采样（周一对齐）"
+    },
+    "1M": {
+     "momentum_dir": "偏多",
+     "momentum_basis": "修复结构：柱连续 5 根收敛（-2→-0），DIF 上行向零轴回归",
+     "trend_dir": "偏空",
+     "call_dir": "中性",
+     "momentum_votes": {
+      "pos": 0,
+      "neg": 4,
+      "valid": 8
+     },
+     "trend_votes": {
+      "pos": 2,
+      "neg": 8,
+      "valid": 10
+     },
+     "macd": {
+      "dif": -1.13,
+      "dea": -1.1,
+      "hist": -0.08,
+      "hist5": [
+       -2.03,
+       -1.83,
+       -1.18,
+       -0.31,
+       -0.08
+      ],
+      "cross_bars_ago": 11,
+      "cross_kind": "死叉"
+     },
+     "sma50": 12.32,
+     "sma200": null,
+     "atr_pct": 43.12,
+     "vol20_pct": 18.67,
+     "maxdd120_pct": -61.16,
+     "factors": [
+      {
+       "name": "MACD",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "MACD DIF -1.13 / DEA -1.10 / 柱 -0.08"
+      },
+      {
+       "name": "RSI",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "RSI14 48.3"
+      },
+      {
+       "name": "ROC10",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "ROC10 -4.48%"
+      },
+      {
+       "name": "随机指标",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "随机 %K 25 / %D 27"
+      },
+      {
+       "name": "CCI",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "CCI20 -18"
+      },
+      {
+       "name": "Aroon",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "Aroon 上 12 / 下 84"
+      },
+      {
+       "name": "ADX/DMI",
+       "cat": "momentum",
+       "vote": 0,
+       "detail": "ADX 9 / +DI 25 / -DI 19"
+      },
+      {
+       "name": "OBV量能",
+       "cat": "momentum",
+       "vote": -1,
+       "detail": "OBV 20期均值方向"
+      },
+      {
+       "name": "SMA20/50",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "SMA20 12.88 / SMA50 12.32"
+      },
+      {
+       "name": "EMA12/26",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EMA12 11.48 / EMA26 12.61"
+      },
+      {
+       "name": "EWMAC16/64",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "EWMAC16/64 标准化 -0.55"
+      },
+      {
+       "name": "唐奇安20",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "唐奇安20 中轨 17.43"
+      },
+      {
+       "name": "Supertrend",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "Supertrend ATR带 -1.61~26.53"
+      },
+      {
+       "name": "PSAR",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "PSAR 空头侧 21.69"
+      },
+      {
+       "name": "一目均衡",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "一目 云顶 17.82 / 云底 15.18"
+      },
+      {
+       "name": "线性回归50",
+       "cat": "trend",
+       "vote": 1,
+       "detail": "线性回归50 标准化斜率 +2.33"
+      },
+      {
+       "name": "价vsSMA50",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "价 / SMA50 12.32"
+      },
+      {
+       "name": "布林中轨",
+       "cat": "trend",
+       "vote": -1,
+       "detail": "布林中轨 12.88"
+      }
+     ],
+     "last_close": 11.655,
+     "last_candle_t": 1790812800,
+     "bars": 65,
+     "source": "Gate.io 日线重采样（自然月）"
+    }
+   },
+   "price": 9.281,
+   "price_source": "Gate.io"
+  }
+ ]
+}
