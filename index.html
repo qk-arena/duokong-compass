@@ -21,10 +21,10 @@
         --line2:#41506a;
         --gold:#ddba6a;      /* 暖金点缀 */
         --gold-soft:rgba(221,186,106,.17);
-        --long:#f2604a;      /* 多头 暗砖红（A股惯例） */
-        --long-soft:rgba(242,96,74,.16);
-        --short:#2fbd8f;     /* 空头 墨绿 */
-        --short-soft:rgba(47,189,143,.15);
+        --long:#2fbd8f;      /* 偏多 绿（用户口径：绿是涨） */
+        --long-soft:rgba(47,189,143,.15);
+        --short:#f2604a;     /* 偏空 红（用户口径：红是跌） */
+        --short-soft:rgba(242,96,74,.16);
         --neutral:#9aa5b1;
         --amber:#ddba6a;
         --amber-soft:rgba(221,186,106,.15);
@@ -50,7 +50,7 @@
       .topctl{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
       .pill{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line2);background:var(--card2);border-radius:999px;padding:4px 11px;font-size:12.5px;color:var(--ink2);min-height:2rem}
       .pill .dot{width:8px;height:8px;border-radius:50%;background:var(--ink3);flex:none}
-      .pill.live .dot{background:var(--short)}
+      .pill.live .dot{background:#2fbd8f}  /* 状态键：在线=绿，钉死不随方向变量对调 */
       .pill.poll .dot{background:var(--amber)}
       .pill.bad .dot{background:var(--red-warn)}
       .switch{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line2);background:var(--card2);border-radius:999px;padding:4px 6px 4px 12px;font-size:12.5px;color:var(--ink2)}
@@ -89,19 +89,22 @@
       .badge{display:inline-block;border-radius:5px;padding:0 6px;font-size:11px;font-weight:700;line-height:1.7;vertical-align:1px}
       .badge.stale{background:var(--amber-soft);color:var(--amber);border:1px solid rgba(221,186,106,.5)}
       .badge.prov{background:rgba(122,143,184,.18);color:#b3c6ec;border:1px solid rgba(122,143,184,.5)}
-      .badge.err{background:var(--long-soft);color:#f59a86;border:1px solid rgba(242,96,74,.5)}
-      .badge.ok{background:var(--short-soft);color:#93dec0;border:1px solid rgba(47,189,143,.5)}
+      .badge.err{background:rgba(242,96,74,.16);color:#f59a86;border:1px solid rgba(242,96,74,.5)}  /* 状态键：错误=红，钉死 */
+      .badge.ok{background:rgba(47,189,143,.15);color:#93dec0;border:1px solid rgba(47,189,143,.5)}  /* 状态键：正常=绿，钉死 */
 
       /* ---------- 概率仪表卡 ---------- */
       .gauges{display:grid;grid-template-columns:repeat(8,1fr);gap:10px}
       .gauge{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:12px 10px 10px;text-align:center;position:relative}
       .gauge .tf{font-size:13px;font-weight:700;color:var(--ink2);letter-spacing:.06em;display:flex;justify-content:space-between;align-items:center}
-      .gauge svg{width:100%;max-width:158px;height:auto;display:block;margin:2px auto 0}
-      .gauge svg path{stroke-width:11px}
-      .gauge svg text{font-size:11px;font-weight:700;fill:#a9b6c4}
-      .gauge svg text:nth-of-type(3){text-anchor:end}
-      .gauge .pct{font-family:var(--mono);font-size:27px;font-weight:800;line-height:1.1}
-      .gauge .verdict{font-size:16px;font-weight:800}
+      .gauge svg{width:100%;max-width:162px;height:auto;display:block;margin:2px auto 0}
+      .gauge svg text{font-size:7.5px;font-weight:700;fill:#8fa3ba}
+      .gauge .ndl{transform-box:view-box;transform-origin:60px 62px;transition:transform .95s cubic-bezier(.25,.9,.25,1)}
+      .gauge .fillArc{transition:stroke-dasharray .95s cubic-bezier(.25,.9,.25,1)}
+      @media (prefers-reduced-motion:reduce){.gauge .ndl,.gauge .fillArc,.gauge .endDot{transition:none!important}}
+      .gauge .pct{font-family:var(--mono);font-size:30px;font-weight:800;line-height:1.1;letter-spacing:.01em}
+      .gauge .pct .pctsym{font-size:17px;font-weight:700;opacity:.72}
+      .gauge .verdict{font-size:17px;font-weight:800}
+      .gauge .cap{font-size:11px;color:var(--ink3);letter-spacing:.04em}
       .gauge .scorebar{height:7px;border-radius:4px;background:#334154;position:relative;margin:8px 2px 6px;overflow:hidden}
       .gauge .scorebar i{position:absolute;top:0;bottom:0}
       .gauge .meta{font-size:11.5px;color:var(--ink3);line-height:1.5;min-height:2.6em}
@@ -155,7 +158,7 @@
       .calc .out{background:#1b232f;border-radius:8px;padding:9px 11px;font-size:13px;line-height:1.7}
       .calc .out b{font-family:var(--mono)}
       .warnbox{border:1px solid rgba(221,186,106,.5);background:var(--amber-soft);border-radius:8px;padding:10px 12px;font-size:12.5px;line-height:1.65}
-      .warnbox.danger{border-color:rgba(242,96,74,.55);background:var(--long-soft)}
+      .warnbox.danger{border-color:rgba(242,96,74,.55);background:rgba(242,96,74,.16)}  /* 状态键：危险=红，钉死 */
       .risk-note{font-size:11.5px;color:var(--ink3);line-height:1.6}
 
       /* ---------- 方法与页脚 ---------- */
@@ -2050,7 +2053,7 @@
     function chipHTML(sym, cn){
       var ev=state.evals[skey(sym,"1d")];
       var dir=ev? ev.call_dir : null;
-      var dotCol=(!dir||dir==="中性"||dir==="无数据")? "#5d6c80" : (dir==="偏多"? "#f2604a" : "#2fbd8f");
+      var dotCol=(!dir||dir==="中性"||dir==="无数据")? "#5d6c80" : (dir==="偏多"? "#2fbd8f" : "#f2604a");
       var bt=ev? btRate(sym,"1d",dir) : null;
       var probTxt=bt? "<span class='prob'>"+bt.rate+"% <small>样本"+bt.n+"</small></span>"
                     : ((dir==="偏多"||dir==="偏空")? "<span class='prob'>样本不足</span>" : "");
@@ -2101,21 +2104,45 @@
       var sym=state.symbol, s=state.series[skey(sym,tf.id)], ev=state.evals[skey(sym,tf.id)];
       var age=dataAgeInfo(sym, tf.id);
       var dir=ev? ev.call_dir : null;
-      var col=(!dir||dir==="中性"||dir==="无数据")? "#9aa5b1" : (dir==="偏多"? "#f2604a" : "#2fbd8f");
+      var col=(!dir||dir==="中性"||dir==="无数据")? "#9aa5b1" : (dir==="偏多"? "#2fbd8f" : "#f2604a");
       var bt=ev? btRate(sym, tf.id, dir) : null;
       var p=bt? bt.rate/100 : null;
-      var valArc=p==null? "" : "<path d='"+arcPath(60,56,44,180,180-180*clamp(p,0.001,0.999))+"' fill='none' stroke='"+col+"' stroke-width='9' stroke-linecap='round'/>";
       var score=ev&&isF(ev.score)? ev.score : null;
-      var needle="";
-      if (p==null && score!=null){
-        var np=polar(60,56,37,90*(1-clamp(score,-1,1)));
-        needle="<line x1='60' y1='56' x2='"+np[0].toFixed(1)+"' y2='"+np[1].toFixed(1)+"' stroke='"+col+"' stroke-width='3.5' stroke-linecap='round'/><circle cx='60' cy='56' r='4.5' fill='"+col+"'/>";
-      }
-      var endDot="";
+      /* 仪表盘：中心 (60,62)、半径 44；底轨双层凹陷、填充渐变+辉光、刻度 0/25/50/75/100、菱形针+金属轴心 */
+      var gStops=dir==="偏多"? ["#12805e","#2fbd8f","#4fe3ab"] : (dir==="偏空"? ["#b73320","#f2604a","#ff8a66"] : ["#5b6a7d","#8494a7","#aeb9c6"]);
+      var defs="<defs>"+
+        "<linearGradient id='gg-"+tf.id+"' x1='0' y1='0' x2='1' y2='0'>"+
+          "<stop offset='0' stop-color='"+gStops[0]+"'/><stop offset='.55' stop-color='"+gStops[1]+"'/><stop offset='1' stop-color='"+gStops[2]+"'/></linearGradient>"+
+        "<radialGradient id='gh-"+tf.id+"' cx='.38' cy='.34' r='.85'>"+
+          "<stop offset='0' stop-color='#f4f7fa'/><stop offset='.55' stop-color='#93a2b5'/><stop offset='1' stop-color='#46536a'/></radialGradient></defs>";
+      var ticks="";
+      [0,10,20,30,40,50,60,70,80,90,100].forEach(function(v){
+        var a=180-1.8*v, major=v%25===0;
+        var q1=polar(60,62,major?50.5:51.5,a), q2=polar(60,62,major?55:54,a);
+        ticks+="<line x1='"+q1[0].toFixed(1)+"' y1='"+q1[1].toFixed(1)+"' x2='"+q2[0].toFixed(1)+"' y2='"+q2[1].toFixed(1)+"' stroke='"+(major?"#7186a0":"#43536c")+"' stroke-width='"+(major?1.6:1)+"'/>";
+      });
+      var tickNums="";
+      [[0,180],[25,135],[50,90],[75,45],[100,0]].forEach(function(pair){
+        var pt=polar(60,62,31.5,pair[1]);
+        tickNums+="<text x='"+pt[0].toFixed(1)+"' y='"+(pt[1]+2.6).toFixed(1)+"' text-anchor='middle'>"+pair[0]+"</text>";
+      });
+      var valArc="", endDot="";
       if (p!=null){
-        var ep=polar(60,56,44,180-180*clamp(p,0.001,0.999));
-        endDot="<circle cx='"+ep[0].toFixed(1)+"' cy='"+ep[1].toFixed(1)+"' r='5.5' fill='"+col+"'/>";
+        var endA=180-180*clamp(p,0.001,0.999);
+        var dash=(clamp(p,0.001,0.999)*100).toFixed(1);
+        valArc="<path class='fillArc' pathLength='100' data-dash='"+dash+"' d='"+arcPath(60,62,44,180,endA)+"' fill='none' stroke='"+col+"' stroke-width='16' stroke-linecap='round' opacity='.16' style='stroke-dasharray:"+dash+" 100'/>"+
+               "<path class='fillArc' pathLength='100' data-dash='"+dash+"' d='"+arcPath(60,62,44,180,endA)+"' fill='none' stroke='url(#gg-"+tf.id+")' stroke-width='10' stroke-linecap='round' style='stroke-dasharray:"+dash+" 100'/>";
+        var ep=polar(60,62,44,endA);
+        endDot="<circle class='endDot' cx='"+ep[0].toFixed(1)+"' cy='"+ep[1].toFixed(1)+"' r='5.2' fill='"+col+"' stroke='#0d1219' stroke-width='1.6'/>";
       }
+      var needle="", phi=null;
+      if (p!=null) phi=180*clamp(p,0,1)-90;
+      else if (score!=null) phi=90*clamp(score,-1,1);
+      if (phi!=null){
+        needle="<g class='ndl' data-k='"+sym+"|"+tf.id+"' style='transform:rotate("+phi.toFixed(1)+"deg)'>"+
+          "<polygon points='60,24 64.6,62 60,68.5 55.4,62' fill='"+col+"' fill-opacity='.95' stroke='rgba(0,0,0,.35)' stroke-width='.8'/></g>";
+      }
+      var hub="<circle cx='60' cy='62' r='7.6' fill='url(#gh-"+tf.id+")' stroke='#10151d' stroke-width='1'/><circle cx='60' cy='62' r='2.8' fill='#141a23'/>";
       var barInner="";
       if (score!=null){
         if (score>=0) barInner="<i style='left:50%;width:"+(score*50)+"%;background:var(--long)'></i>";
@@ -2132,16 +2159,15 @@
       }
       return "<div class='gauge'>"+
         "<div class='tf'><span>"+tf.label+"</span><span class='num' style='font-weight:500;color:var(--ink3)'>"+(ev? ev.bars+" 根":"")+"</span></div>"+
-        "<svg viewBox='0 0 120 66' role='img' aria-label='"+tf.label+"方向与历史命中率'>"+
-          "<path d='"+arcPath(60,56,44,180,0)+"' fill='none' stroke='#334154' stroke-width='9' stroke-linecap='round'/>"+
-          valArc+endDot+needle+
-          "<text x='8' y='66' font-size='8' fill='#a9b6c4'>0</text>"+
-          "<text x='47' y='10' font-size='8' fill='#a9b6c4'>命中率</text>"+
-          "<text x='106' y='66' font-size='8' fill='#a9b6c4'>100</text>"+
+        "<svg viewBox='0 0 120 74' role='img' aria-label='"+tf.label+"方向与历史命中率'>"+
+          defs+
+          "<path d='"+arcPath(60,62,44,180,0)+"' fill='none' stroke='#0d1219' stroke-width='13' stroke-linecap='round'/>"+
+          "<path d='"+arcPath(60,62,44,180,0)+"' fill='none' stroke='#2c3a4f' stroke-width='10' stroke-linecap='round'/>"+
+          ticks+tickNums+valArc+endDot+needle+hub+
         "</svg>"+
-        "<div class='pct' style='color:"+col+"'>"+(bt? bt.rate+"%" : "—")+"</div>"+
+        "<div class='pct' style='color:"+col+"'>"+(bt? bt.rate+"<span class='pctsym'>%</span>" : "—")+"</div>"+
         "<div class='verdict' style='color:"+col+"'>"+(dir||"—")+"</div>"+
-        "<div style='font-size:11px;color:var(--ink3)'>"+(bt? "历史命中率 · 样本 "+bt.n : "")+"</div>"+
+        "<div class='cap'>"+(bt? "历史命中率 · 样本 "+bt.n : "")+"</div>"+
         "<div class='scorebar'>"+barInner+"</div>"+
         "<div class='meta'>"+meta+"</div>"+
       "</div>";
@@ -2154,13 +2180,41 @@
     }
     function renderGauges(){
       $("gauges").innerHTML=TIMEFRAMES.map(gaugeCard).join("");
+      animateGaugesOnce();
+    }
+    /* 载入动画：每个（标的×周期）只在首次渲染时摆动一次，后续刷新直接定格，不反复乱动 */
+    var gaugeAnimDone={};
+    function animateGaugesOnce(){
+      var host=$("gauges"); if (!host) return;
+      var ndls=host.querySelectorAll(".ndl");
+      for (var i=0;i<ndls.length;i++){
+        (function(g){
+          var k=g.getAttribute("data-k");
+          if (gaugeAnimDone[k]) return;
+          gaugeAnimDone[k]=1;
+          var card=g;
+          while (card && !(card.classList && card.classList.contains("gauge"))) card=card.parentNode;
+          var arcs=card? card.querySelectorAll(".fillArc") : [];
+          var dot=card? card.querySelector(".endDot") : null;
+          var finalT=g.style.transform;
+          g.style.transition="none"; g.style.transform="rotate(-90deg)";
+          for (var j=0;j<arcs.length;j++){ arcs[j].style.transition="none"; arcs[j].style.strokeDasharray="0 100"; }
+          if (dot){ dot.style.transition="none"; dot.style.opacity="0"; }
+          void g.getBoundingClientRect();
+          requestAnimationFrame(function(){
+            g.style.transition=""; g.style.transform=finalT;
+            for (var j=0;j<arcs.length;j++){ arcs[j].style.transition=""; arcs[j].style.strokeDasharray=arcs[j].getAttribute("data-dash")+" 100"; }
+            if (dot){ dot.style.transition="opacity .35s ease .55s"; dot.style.opacity="1"; }
+          });
+        })(ndls[i]);
+      }
     }
     /* ---------------- 渲染：矩阵 ---------------- */
     function cellHTML(val, tfId){
       var cls=tfId===state.mobileTf? "cell mshow":"cell";
       if (!isF(val)) return "<td class='"+cls+" na'><span class='cv'>—</span><span class='cl'>&nbsp;</span></td>";
       var lab=val>0? "多" : (val<0? "空" : "中");
-      var bg=val>0? "rgba(242,96,74,.48)" : (val<0? "rgba(47,189,143,.48)" : "#3d4c61");
+      var bg=val>0? "rgba(47,189,143,.48)" : (val<0? "rgba(242,96,74,.48)" : "#3d4c61");
       var labCol=val>0? "var(--long)" : (val<0? "var(--short)" : "var(--neutral)");
       return "<td class='"+cls+"'><span class='cv' style='background:"+bg+"'>"+lab+"</span><span class='cl' style='color:"+labCol+"'>"+(val>0? "+1" : (val<0? "−1" : "0"))+"</span></td>";
     }
@@ -2296,7 +2350,7 @@
         if (r.type==="signal"){
           html+="<tr><td>"+esc(r.recorded_at_bj)+"</td><td>"+esc(r.symbol)+"</td><td>"+esc(r.tf_label)+"</td><td>"+esc(r.call_dir)+"</td><td class='num' style='text-align:right'>"+r.price+"</td><td>进行中</td></tr>";
         } else {
-          var col=r.verdict==="命中"? "var(--short)" : (r.verdict==="未命中"? "var(--long)" : "var(--ink2)");
+          var col=r.verdict==="命中"? "#2fbd8f" : (r.verdict==="未命中"? "#f2604a" : "var(--ink2)");  /* 状态键：命中=绿、未命中=红，钉死不随方向变量对调 */
           html+="<tr><td>"+esc(r.settled_at_bj)+"</td><td>"+esc(r.symbol)+"</td><td>"+esc(r.tf_label)+"</td><td>结清</td><td class='num' style='text-align:right'>"+r.entry_price+" → "+r.exit_price+"</td><td style='color:"+col+"'>"+esc(r.verdict)+" "+(r.change_pct>=0?"+":"")+r.change_pct+"%</td></tr>";
         }
       });
