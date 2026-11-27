@@ -7,9 +7,39 @@ UTC 自然月重采样，只保留已结束的周/月。
 """
 import json, math, urllib.request, datetime as dt
 
-SYMBOLS = ["BTC", "ETH", "SOL", "BNB", "XRP", "DOGE", "ADA", "LINK"]
+SYMBOLS = ["BTC", "ETH", "SOL", "BNB", "XRP", "DOGE", "ADA", "LINK", "AVAX", "LTC"]
+# 美股币股（Binance bStocks）：交易对 = 代码 + B + USDT（如 NVDABUSDT）。
+# 2026-11-27 经 exchangeInfo 核查 9 个目标对全部 TRADING；日线历史自 2026-06 起
+# 仅 120-170 根，只够 4h/日线，周线/月线根数不足自动缺席，不硬凑。
+BSTOCKS = ["AAPL", "AMZN", "GOOGL", "META", "MSFT", "NVDA", "QQQ", "SPY", "TSLA"]
 GATE = "https://api.gateio.ws/api/v4/spot/candlesticks?currency_pair={s}_USDT&interval={i}&limit={n}"
 BINANCE = "https://data-api.binance.vision/api/v3/klines?symbol={s}USDT&interval={i}&limit={n}"
+GATE_TICKER = "https://api.gateio.ws/api/v4/spot/tickers?currency_pair={s}_USDT"
+BINANCE_TICKER = "https://data-api.binance.vision/api/v3/ticker/price?symbol={s}USDT"
+
+def fetch_snapshot_price(symbol):
+    """生成时刻的现货现价（spot ticker）。
+    字段含义：snapshot_price = 本次快照生成那一刻的交易所现价，仅供页面在
+    浏览器端实时价拉取失败时兜底展示；它不是任何一根 K 线的收盘价。
+    信号计算与台账发出价仍只用已收盘 K 线收盘价（见 analyze/last_close），与此无关。
+    主源 Gate ticker，失败换 Binance Vision ticker；都失败返回 (None, "")。"""
+    for _try in range(2):  # Gate 偶发超时，ticker 轻量，重试一次
+        try:
+            with urllib.request.urlopen(GATE_TICKER.format(s=symbol), timeout=15) as r:
+                data = json.load(r)
+            if data and data[0].get("last"):
+                return float(data[0]["last"]), "Gate.io ticker（生成时刻现价）"
+        except Exception:
+            pass
+    for _try in range(2):
+        try:
+            with urllib.request.urlopen(BINANCE_TICKER.format(s=symbol), timeout=15) as r:
+                data = json.load(r)
+            if data.get("price"):
+                return float(data["price"]), "Binance Vision ticker（生成时刻现价）"
+        except Exception:
+            pass
+    return None, ""
 
 def fetch_gate(symbol, interval, limit):
     url = GATE.format(s=symbol, i=interval, n=limit)
@@ -389,6 +419,211 @@ def f_boll_mid(cs, n=20):
     if s is None: return None, ""
     return (1 if closes[-1] > s else (-1 if closes[-1] < s else 0)), f"布林中轨 {s:.2f}"
 
+# ---------- revived factors (2026-11-27 second audit round) ----------
+# 旧看板 57 因子首轮被「高度重复」一刀切掉的独立指标，本轮按权威定义重新实现，
+# 投票阈值见 FACTOR_AUDIT.md，经 tools/verify2.py 两套独立实现 + 两家数据源交叉验证。
+
+def _wma_series(vals, n):
+    out = [None] * len(vals)
+    w = list(range(1, n + 1)); den = sum(w)
+    for i in range(n - 1, len(vals)):
+        out[i] = sum(a * b for a, b in zip(vals[i - n + 1:i + 1], w)) / den
+    return out
+
+def f_hull(cs):
+    closes = [c["c"] for c in cs]
+    if len(closes) < 70: return None, ""
+    wh = _wma_series(closes, 27); wf = _wma_series(closes, 55)
+    raw = [2 * a - b for a, b in zip(wh, wf) if a is not None and b is not None]
+    hma = [x for x in _wma_series(raw, 7) if x is not None]
+    a = atr(cs)
+    if len(hma) < 4 or not a: return None, ""
+    slope = (hma[-1] - hma[-4]) / a
+    return (1 if slope > 0.05 else (-1 if slope < -0.05 else 0)), f"HMA55 3根斜率 {slope:.2f} ATR"
+
+def f_kama(cs):
+    closes = [c["c"] for c in cs]
+    if len(closes) < 60: return None, ""
+    kama = closes[10]
+    for i in range(11, len(closes)):
+        change = abs(closes[i] - closes[i - 10])
+        vol = sum(abs(closes[j] - closes[j - 1]) for j in range(i - 9, i + 1))
+        er = change / vol if vol > 0 else 0
+        sc = (er * (2 / 3 - 2 / 31) + 2 / 31) ** 2
+        kama += sc * (closes[i] - kama)
+    a = atr(cs)
+    if not a: return None, ""
+    gap = (closes[-1] - kama) / a
+    return (1 if gap > 0.25 else (-1 if gap < -0.25 else 0)), f"收盘距 KAMA30 {gap:.2f} ATR"
+
+def f_vortex(cs, n=14):
+    if len(cs) < n + 2: return None, ""
+    seg = cs[-(n + 1):]
+    vp = sum(abs(seg[i]["h"] - seg[i - 1]["l"]) for i in range(1, len(seg)))
+    vm = sum(abs(seg[i]["l"] - seg[i - 1]["h"]) for i in range(1, len(seg)))
+    tr = sum(max(seg[i]["h"] - seg[i]["l"], abs(seg[i]["h"] - seg[i - 1]["c"]),
+                 abs(seg[i]["l"] - seg[i - 1]["c"])) for i in range(1, len(seg)))
+    if tr <= 0: return None, ""
+    vip, vim = vp / tr, vm / tr
+    return (1 if vip > vim else (-1 if vip < vim else 0)), f"VI+ {vip:.2f} / VI- {vim:.2f}"
+
+def f_kst(cs):
+    closes = [c["c"] for c in cs]
+    if len(closes) < 130: return None, ""
+    def roc(n):
+        return [None] * n + [(closes[i] / closes[i - n] - 1) * 100 for i in range(n, len(closes))]
+    def sma_of(vals, n):
+        out = [None] * len(vals)
+        for i in range(n - 1, len(vals)):
+            seg = vals[i - n + 1:i + 1]
+            if all(v is not None for v in seg): out[i] = sum(seg) / n
+        return out
+    r1 = sma_of(roc(10), 10); r2 = sma_of(roc(15), 10)
+    r3 = sma_of(roc(20), 10); r4 = sma_of(roc(30), 15)
+    kst = [None] * len(closes)
+    for i in range(len(closes)):
+        if None not in (r1[i], r2[i], r3[i], r4[i]):
+            kst[i] = r1[i] + 2 * r2[i] + 3 * r3[i] + 4 * r4[i]
+    sig = sma_of(kst, 9)
+    if kst[-1] is None or sig[-1] is None: return None, ""
+    return (1 if kst[-1] > sig[-1] else (-1 if kst[-1] < sig[-1] else 0)), f"KST {kst[-1]:.2f} / 信号 {sig[-1]:.2f}"
+
+def f_dist_high(cs):
+    closes = [c["c"] for c in cs]
+    if len(closes) < 120: return None, ""
+    win = 250 if len(closes) >= 260 else 120
+    hh = max(x["h"] for x in cs[-win:])
+    if hh <= 0: return None, ""
+    dd = (hh - closes[-1]) / hh * 100
+    return (1 if dd <= 6 else (-1 if dd >= 15 else 0)), f"距 {win} 根新高回撤 {dd:.1f}%"
+
+def _last20_stats(closes):
+    seg = closes[-20:]; m = sum(seg) / 20
+    sd = math.sqrt(sum((x - m) ** 2 for x in seg) / 20)
+    return m, sd
+
+def f_pctb_rev(cs):
+    closes = [c["c"] for c in cs]
+    if len(closes) < 25: return None, ""
+    m, sd = _last20_stats(closes)
+    if sd <= 0: return None, ""
+    pb = (closes[-1] - (m - 2 * sd)) / (4 * sd)
+    return (-1 if pb >= 0.9 else (1 if pb <= 0.1 else 0)), f"%B {pb:.2f}（反向）"
+
+def f_zscore_rev(cs):
+    closes = [c["c"] for c in cs]
+    if len(closes) < 25: return None, ""
+    m, sd = _last20_stats(closes)
+    if sd <= 0: return None, ""
+    z = (closes[-1] - m) / sd
+    return (-1 if z >= 2 else (1 if z <= -2 else 0)), f"Z {z:.2f}（反向）"
+
+def f_rsi_rev(cs):
+    r = rsi([c["c"] for c in cs])
+    if r is None: return None, ""
+    return (-1 if r >= 70 else (1 if r <= 30 else 0)), f"RSI {r:.0f} 极端反转读法"
+
+def f_keltner(cs):
+    closes = [c["c"] for c in cs]
+    if len(closes) < 40: return None, ""
+    mid = ema_series(closes, 20)[-1]
+    a = atr(cs, 10)
+    if mid is None or not a: return None, ""
+    up, lo = mid + 2 * a, mid - 2 * a
+    pos = "上轨外" if closes[-1] > up else ("下轨外" if closes[-1] < lo else "带内")
+    return (1 if closes[-1] > up else (-1 if closes[-1] < lo else 0)), f"收盘 Keltner {pos}"
+
+def f_skew_rev(cs):
+    closes = [c["c"] for c in cs]
+    if len(closes) < 70: return None, ""
+    rets = [math.log(closes[i] / closes[i - 1]) for i in range(len(closes) - 60, len(closes))]
+    m = sum(rets) / len(rets)
+    m2 = sum((r - m) ** 2 for r in rets) / len(rets)
+    m3 = sum((r - m) ** 3 for r in rets) / len(rets)
+    if m2 <= 0: return None, ""
+    sk = m3 / (m2 ** 1.5)
+    return (-1 if sk > 0.5 else (1 if sk < -0.5 else 0)), f"60根收益偏度 {sk:.2f}（反向）"
+
+def f_downside(cs):
+    closes = [c["c"] for c in cs]
+    if len(closes) < 50: return None, ""
+    rets = [math.log(closes[i] / closes[i - 1]) for i in range(len(closes) - 40, len(closes))]
+    tot = sum(r * r for r in rets)
+    if tot <= 0: return None, ""
+    share = sum(r * r for r in rets if r < 0) / tot * 100
+    return (-1 if share > 55 else (1 if share < 45 else 0)), f"下行波动占比 {share:.0f}%"
+
+def f_pvcorr(cs):
+    if len(cs) < 30: return None, ""
+    seg = cs[-21:]
+    dp = [math.log(seg[i]["c"] / seg[i - 1]["c"]) for i in range(1, len(seg))]
+    dv = [math.log(seg[i]["v"] / seg[i - 1]["v"]) if seg[i]["v"] > 0 and seg[i - 1]["v"] > 0 else 0.0
+          for i in range(1, len(seg))]
+    ma, mb = sum(dp) / len(dp), sum(dv) / len(dv)
+    cov = sum((a - ma) * (b - mb) for a, b in zip(dp, dv))
+    va = math.sqrt(sum((a - ma) ** 2 for a in dp)); vb = math.sqrt(sum((b - mb) ** 2 for b in dv))
+    if va <= 0 or vb <= 0: return None, ""
+    corr = cov / (va * vb)
+    return (1 if corr > 0.3 else (-1 if corr < -0.3 else 0)), f"价量相关 {corr:.2f}"
+
+def f_vwap_pos(cs):
+    if len(cs) < 30: return None, ""
+    seg = cs[-20:]
+    tv = sum(x["v"] for x in seg)
+    if tv <= 0: return None, ""
+    vwap = sum(((x["h"] + x["l"] + x["c"]) / 3) * x["v"] for x in seg) / tv
+    a = atr(cs)
+    if not a: return None, ""
+    gap = (cs[-1]["c"] - vwap) / a
+    return (1 if gap > 0.5 else (-1 if gap < -0.5 else 0)), f"收盘距 VWAP20 {gap:.2f} ATR"
+
+def _mfv(x):
+    rng = x["h"] - x["l"]
+    if rng <= 0: return 0.0
+    return ((x["c"] - x["l"]) - (x["h"] - x["c"])) / rng * x["v"]
+
+def f_cmf(cs):
+    if len(cs) < 30: return None, ""
+    seg = cs[-20:]
+    den = sum(x["v"] for x in seg)
+    if den <= 0: return None, ""
+    cmf = sum(_mfv(x) for x in seg) / den
+    return (1 if cmf > 0.05 else (-1 if cmf < -0.05 else 0)), f"CMF {cmf:.3f}"
+
+def f_mfi(cs):
+    if len(cs) < 30: return None, ""
+    seg = cs[-15:]
+    pos = neg = 0.0
+    for i in range(1, len(seg)):
+        tp_p = (seg[i - 1]["h"] + seg[i - 1]["l"] + seg[i - 1]["c"]) / 3
+        tp = (seg[i]["h"] + seg[i]["l"] + seg[i]["c"]) / 3
+        flow = tp * seg[i]["v"]
+        if tp > tp_p: pos += flow
+        elif tp < tp_p: neg += flow
+    mfi = 100.0 if neg <= 0 and pos > 0 else (50.0 if neg <= 0 else 100 - 100 / (1 + pos / neg))
+    return (1 if mfi > 60 else (-1 if mfi < 40 else 0)), f"MFI {mfi:.0f}"
+
+def f_ad_slope(cs):
+    if len(cs) < 45: return None, ""
+    ad = 0.0; series = []
+    for x in cs:
+        ad += _mfv(x); series.append(ad)
+    mean_v = sum(x["v"] for x in cs[-20:]) / 20
+    if mean_v <= 0: return None, ""
+    slope = (series[-1] - series[-21]) / (20 * mean_v)
+    return (1 if slope > 0.1 else (-1 if slope < -0.1 else 0)), f"A/D 20根归一斜率 {slope:.2f}"
+
+def f_vol_break(cs):
+    if len(cs) < 45: return None, ""
+    prior = cs[-21:-1]
+    hh = max(x["h"] for x in prior); ll = min(x["l"] for x in prior)
+    mean_v = sum(x["v"] for x in prior) / len(prior)
+    last = cs[-1]
+    ratio = last["v"] / mean_v if mean_v > 0 else 0
+    if last["c"] > hh: return (1 if ratio > 1 else 0), f"创20根新高，量比 {ratio:.2f}"
+    if last["c"] < ll: return (-1 if ratio > 1 else 0), f"创20根新低，量比 {ratio:.2f}"
+    return 0, f"未突破，量比 {ratio:.2f}"
+
 FACTORS = [
     # name, category, func
     ("MACD", "momentum", f_macd),
@@ -413,6 +648,24 @@ FACTORS = [
     ("价vsSMA200", "trend", lambda cs: f_price_vs_sma(cs, 200)),
     ("TSMOM120", "trend", f_tsmom),
     ("布林中轨", "trend", f_boll_mid),
+    # --- revived 2026-11-27 (see FACTOR_AUDIT.md round 2) ---
+    ("KST", "momentum", f_kst),
+    ("距新高", "momentum", f_dist_high),
+    ("布林%B反向", "momentum", f_pctb_rev),
+    ("Z分数反向", "momentum", f_zscore_rev),
+    ("RSI反转", "momentum", f_rsi_rev),
+    ("收益偏度反向", "momentum", f_skew_rev),
+    ("下行波动占比", "momentum", f_downside),
+    ("价量相关20", "momentum", f_pvcorr),
+    ("VWAP位置20", "momentum", f_vwap_pos),
+    ("Chaikin资金流", "momentum", f_cmf),
+    ("MFI", "momentum", f_mfi),
+    ("A/D斜率", "momentum", f_ad_slope),
+    ("Hull均线55", "trend", f_hull),
+    ("KAMA30", "trend", f_kama),
+    ("Vortex14", "trend", f_vortex),
+    ("Keltner位置", "trend", f_keltner),
+    ("放量突破", "trend", f_vol_break),
 ]
 
 def direction_from_votes(votes):
@@ -495,9 +748,41 @@ def build_symbol(symbol):
             a = analyze(candles)
             a["source"] = src
             out["timeframes"][tf] = a
-    out["price"] = daily[-1]["c"] if daily else None
-    out["price_source"] = dsrc
+    # 快照价：生成时刻的现货 ticker（见 fetch_snapshot_price 的字段含义）。
+    # 旧版这里误把最后一根已收盘日线收盘价当现价输出，行情一动就全线滞后一天，已改掉。
+    snap_price, snap_src = fetch_snapshot_price(symbol)
+    out["snapshot_price"] = snap_price
+    out["snapshot_price_source"] = snap_src
+    out["price_source"] = dsrc  # K 线数据来源（长历史口径），非价格来源
     # sparkline：只用已收盘日线收盘价（daily 在 fetch_daily_long/fetch 里已过滤 finished），
     # 取最后 ≤60 根，6 位有效数字足够画走势小图；无数据则空数组，前端整块不渲染。
     out["spark_1d"] = [float(f"{r['c']:.6g}") for r in daily[-60:]] if daily else []
+    out["market"] = "crypto"
+    out["live_pair"] = symbol + "USDT"
+    return out
+
+def build_bstock(symbol):
+    """美股币股：只走 Binance Vision 的 bStocks 交易对（代码+B）。
+    口径与加密一致（只用已收盘 K 线、动量/趋势分开），但历史短：
+    周线约 20 根、月线约 5 根，不足 30 根的周期自动缺席，不硬凑。
+    页面统一标注：币股行情，跟踪股价可能有小幅偏离，不冒充交易所股价。"""
+    pair = symbol + "B"
+    out = {"symbol": symbol, "timeframes": {}}
+    daily = fetch_binance(pair, "1d", 1000)
+    h4 = fetch_binance(pair, "4h", 400)
+    weekly = resample_weekly(daily)
+    monthly = resample_monthly(daily)
+    src = "Binance 币股（bStocks）"
+    for tf, candles in [("4h", h4), ("1d", daily), ("1w", weekly), ("1M", monthly)]:
+        if len(candles) >= 30:
+            a = analyze(candles)
+            a["source"] = src if tf in ("4h", "1d") else src + " 日线重采样"
+            out["timeframes"][tf] = a
+    snap_price, snap_src = fetch_snapshot_price(pair)
+    out["snapshot_price"] = snap_price
+    out["snapshot_price_source"] = snap_src
+    out["price_source"] = src
+    out["spark_1d"] = [float(f"{r['c']:.6g}") for r in daily[-60:]] if daily else []
+    out["market"] = "bstock"
+    out["live_pair"] = pair + "USDT"
     return out

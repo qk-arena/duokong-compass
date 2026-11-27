@@ -13,7 +13,7 @@
 """
 import json, os, sys, datetime as dt
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from engine import build_symbol, SYMBOLS
+from engine import build_symbol, build_bstock, SYMBOLS, BSTOCKS
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "data")
@@ -51,9 +51,14 @@ def main():
             symbols.append(build_symbol(s))
         except Exception as e:
             print(f"WARN {s}: {e}")
+    for s in BSTOCKS:
+        try:
+            symbols.append(build_bstock(s))
+        except Exception as e:
+            print(f"WARN bstock {s}: {e}")
     snapshot = {"generated_at_utc": utc(now), "generated_at_bj": bj(now),
                 "source_primary": "Gate.io 现货公开接口", "source_fallback": "Binance Vision",
-                "note": "正式信号只用已收盘 K 线；动量与趋势分开；无合成概率；美股不在 v1 范围",
+                "note": "正式信号只用已收盘 K 线；动量与趋势分开；无合成概率；美股为币安币股行情（跟踪股价可能有小幅偏离），历史短，只开 4h/日线",
                 "symbols": symbols}
     with open(os.path.join(DATA, "current.json"), "w", encoding="utf-8") as f:
         json.dump(snapshot, f, ensure_ascii=False, indent=1)
